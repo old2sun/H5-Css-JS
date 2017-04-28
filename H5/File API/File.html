@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文件api</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<form name='uploadForm'>
+		<fieldset>
+			<legend>示例</legend>
+			<input type="file" id='input' multiple onchange="handleFiles(this.files)">
+			<input type="file" id='inputField' multiple >
+		</fieldset>
+	</form>
+</body>
+<script type="text/javascript">
+	// 获取文件, FileList 是它们的数组
+	var input = document.getElementById('input').files;
+	console.log(input); // 文件数组
+	var input = document.getElementById('input').files[0];
+	console.log(input); // 单个文件
+
+	// onchange触发的方法
+	function handleFiles(list){
+		var fileList = list;
+		console.log(fileList); // 文件数组
+		console.log(fileList[0]); // 单个文件
+	}
+
+	// 动态添加 change 事件
+	var inputElement = document.getElementById('inputField');
+	inputElement.addEventListener("change",filesHandle,false);
+	function filesHandle() {
+		var fileList = this.files;
+		console.log(fileList)
+	}
+</script>
+</html>

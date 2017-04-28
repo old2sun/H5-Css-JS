@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>调用隐藏input标签的方法</title>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<form name='uploadForm'>
+		<fieldset>
+			<legend>示例</legend>
+				<!-- accept 属性限制图像类型 -->
+				<input type="file" id="fileElem" value="send file" multiple accept="image/*" style="display:none;" onchange="handlFiles(this.files)">
+				<a href="#" id="fileSelect">Select some files</a>
+		</fieldset>
+	</form>
+</body>
+<script type="text/javascript">
+	var fileSelect = document.getElementById('fileSelect'),
+		fileElem = document.getElementById('fileElem');
+
+	fileSelect.addEventListener('click',function(e){
+		if(fileElem) {
+			fileElem.click(); // button 方法
+		}
+		e.preventDefault(); // 阻止a跳转事件
+	});
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示用户所选图片的缩略图</title>
+	<style type="text/css">
+		#preview {width: 300px;height: 300px;border-radius:50%;overflow:hidden;background-color:skyblue;}
+		#preview img {width:100%;}
+	</style>
+</head>
+<body>
+	<form name='uploadForm'>
+		<fieldset>
+			<legend>示例</legend>
+				<!-- accept 属性限制图像类型 -->
+				<input type="file" id="fileElem" value="send file" multiple accept="image/*" style="display:none;" onchange="handlFiles(this.files)">
+				<a href="#" id="fileSelect">Select some files</a>
+		</fieldset>
+	</form>
+	<div id='preview'></div>
+</body>
+<script type="text/javascript">
+	var fileSelect = document.getElementById('fileSelect'),
+		fileElem = document.getElementById('fileElem');
+
+	fileSelect.addEventListener('click',function(e){
+		if(fileElem) {
+			fileElem.click();
+		}
+		e.preventDefault();
+	});
+
+	// 上传图片显示预览处理方法
+	function handlFiles(files) {
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var imageType = /^image\//;
+		
+			if ( !imageType.test(file.type) ) {
+				continue;
+			}
+
+			var img = document.createElement('img');
+			img.classList.add("obj"); // 给图片添加类让它们更加容易在 DOM Tree 被找到
+			img.file = file; // 给图片添加 file 属性确定图片文件
+
+			preview.appendChild(img); // 把展示图片放入 div
+
+			var reader = new FileReader();
+			reader.onload = (function(aImg) {
+				return function(e) {
+					aImg.src = e.target.result;
+				};
+			})(img);
+			reader.readAsDataURL(file); // 读取图片返回路径
+		}
+	}
+	var preview = document.getElementById('preview');
+</script>
+</html>

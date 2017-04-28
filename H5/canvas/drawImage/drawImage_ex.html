@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drawImage</title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<canvas id='myCanvas' width="300" height="300" style="border: 1px #ccc solid ">不支持浏览器</canvas>
+</body>
+<script type="text/javascript">
+	var c = document.getElementById('myCanvas');
+	var ctx = c.getContext('2d');
+	var img = new Image();
+	img.src = "http://images.cnblogs.com/cnblogs_com/vajoy/558869/o_avatar.jpg";
+	img.onload = function() {
+		// 改变它的宽高
+		// ctx.drawImage(img,30,30,250,150);
+
+		/*
+		* 在画布的坐标(30,30)绘制宽高250,150的img
+		* 然后在img的坐标(10,20)上绘制宽高300的img
+		* swidth和sheight类似于拉伸，数值越小图片拉得越大，数值大，图片小.
+		*/ 
+		ctx.drawImage(img,10,20,300,300,30,30,250,150); 
+
+	}
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drawImage</title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<!-- drawImage(img,sx,sy,swidth,sheight,x,y,width,height)
+		img是图像、画布或视频；s字母开头是shearing，即裁剪，so它们
+		代表裁剪位置和裁剪宽高；只有img 和 x y是必填，其它选填 -->
+	<canvas id='myCanvas' width="300" height="300" style="border: 1px #ccc solid ">不支持浏览器</canvas>
+</body>
+<script type="text/javascript">
+	var c = document.getElementById('myCanvas');
+	var ctx = c.getContext('2d');
+	var img = new Image();
+	img.src = "http://images.cnblogs.com/cnblogs_com/vajoy/558869/o_avatar.jpg";
+	// image对象的onload方法，等图片加载完毕后再执行
+	img.onload = function() {
+		ctx.drawImage(img,30,30); // 在画布30,30坐标上绘制图片
+	}
+</script>
+</html>

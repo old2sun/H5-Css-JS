@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽file</title>
+	<style type="text/css">
+		#dropbox {width:300px;height:200px;border:2px #999 solid;}
+	
+	</style>
+</head>
+<body>
+	<div id='dropbox'>拖拽文件</div>
+</body>
+<script type="text/javascript">
+	var dropbox;
+
+	dropbox = document.getElementById('dropbox'); // 创建拖拽区域
+	dropbox.addEventListener('dragenter',dragenter,false); // 进入拖拽触发事件
+	dropbox.addEventListener('dragover',dragover,false); // 在拖拽区域内
+	dropbox.addEventListener('drop',drop,false); // 拖拽动作完成
+
+	// 阻止默认事件才能触发拖拽事件
+	function dragenter(e) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+
+	function dragover(e) {
+		e.stopPropagation();
+		e.preventDefault();
+	}
+
+	function drop(e) {
+		e.stopPropagation();
+		e.preventDefault();
+
+		var dt = e.dataTransfer; // 通过 dataTransfer 对象获得 files 对象
+		var files = dt.files; // 文件数组集合
+
+		dropbox.innerHTML = files[0].name;
+		
+		handlFiles(files);
+	}
+
+	function handlFiles(list){
+		var fileList = list;
+	}
+</script>
+</html>

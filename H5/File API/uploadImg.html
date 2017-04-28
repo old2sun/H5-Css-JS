@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传图片</title>
+	<style type="text/css">
+		.image {width:100px;height:100px;border-radius:50%;overflow:hidden;}
+		.image img{width:100%}
+	</style>
+</head>
+<body>
+	<form name='uploadForm'>
+		<fieldset>
+			<legend>上传图片</legend>
+			<div class="image"><img id='uploadPreview' src="/XXX.jpg"></div>
+			<input id='uploadImage' type="file" value="upload" name="myPhoto" onchange="loadImageFile()" multiple="multiple">
+		</fieldset>
+	</form>
+	<p>路径</p>
+</body>
+<script type="text/javascript">
+
+	// 实例化 FileReader对象
+	oFReader = new FileReader(),
+			   rFilter = /\.png||\.jpg/;
+			   content = document.getElementsByTagName('p')[0];
+
+	// 读取操作成功后调用。这里意思是读取图片成功后把路径返回 img 标签
+	oFReader.onload = function(ofREvent) {
+
+		console.log(oFReader.readyState); // 状态码为2,读取完成
+
+		document.getElementById("uploadPreview").src = ofREvent.target.result;
+
+		content.innerHTML = ofREvent.target.result;
+
+	}
+
+	function loadImageFile() {
+
+		// 判断文件数,文件是以数组方式展示; ，每个文件都有name、size、type 等属性
+		if(document.getElementById("uploadImage").files.length ===0) {return;}
+
+		var oFile = document.getElementById("uploadImage").files[0];
+
+		if(!rFilter.test(oFile.type)) {content.innerHTML = '错误类型';return;}
+		
+		oFReader.readAsDataURL(oFile); // 读取文件操作
+
+	}
+
+	/*
+	* 实例化 FileReader对象,它有些关于读取操作的方法,它们的参数都是 file
+	* readAsDataURL(),读取文件成功后返回一个URL格式地址,在e.targe.result属性中;
+	* readAsBinaryString(), 读取成功后返回文件的二进制数据到 result 属性;
+	* readAsArrayBuffer(), 成功后返回 ArraryBuffer 对象;
+	* readAsText(),成功后返回字符串？
+	* PS: 它们的结果都是返回 result 属性
+	*/ 
+
+	/*
+	*  读取操作会有状态常量,0代表还没读取,1代表正在读取,2代表读取完毕
+	*/ 
+	
+	/*
+	* FileReader对象关于读取操作触发事件的方法.
+	* onabort,读取被中止时调用; onerror,读取错误后调用; onload,读取成功后;
+	* onloadend,读取完成,但不管失败还是成功,在onload或onerror之后调用;
+	* onstart, 读取开始前调用; onprogress,读取过程中周期性调用
+	* PS: 有读取操作才会触发
+	*/ 
+</script>
+</html>

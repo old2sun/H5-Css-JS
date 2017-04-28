@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建上传文件任务</title>
+	<style type="text/css">
+		#preview {width: 300px;height: 300px;border-radius:50%;overflow:hidden;background-color:crimson;}
+		#preview img {width:100%;}
+	</style>
+</head>
+<body>
+	<form name='uploadForm'>
+		<fieldset>
+			<legend>示例</legend>
+				<!-- accept 属性限制图像类型 -->
+				<input type="file" id="fileElem" value="send file" multiple style="display:none;" onchange="handlFiles(this.files)">
+				<a href="#" id="fileSelect">Select some files</a>
+				<input type="button" value="send file" multiple onclick="sendFiles()">
+		</fieldset>
+	</form>
+	<div id='preview'></div>
+</body>
+<script type="text/javascript">
+	/*
+	* 这个示例坑太多,只有个大致思路,可弃
+	*/ 
+
+	// 获取图片和其数据并调用上传方法
+	function sendFiles() {
+		var imgs = document.querySelectorAll(".obj");
+		for ( var i = 0; i < imgs.length; i++ ) {
+			// 创建一个 FileUpload 实例,参数一是图片元素,参数二是图片的文件数据
+			new FileUpload(imgs[i],imgs[i].file);
+		}
+	}
+	// 上传功能
+	function FileUpload(img, file) {
+		var reader = new FileReader();
+		// this.ctrl = creteThrobber(img); // I dont know what it is
+		var xhr = new XMLHttpRequest();
+		this.xhr = xhr;
+
+		var self = this;
+		// 监听接收数据期间事件
+		this.xhr.upload.addEventListener("progress", function(e) {
+			if (e.lengthComputable) {	// 上传完成度?
+				var percentage = Math.round((e.loaded * 100) / e.total);
+				self.ctrl.update(percentage);	// I dont know what it is
+			}
+		},false);
+
+		// 接收到数据时触发事件
+		xhr.upload.addEventListener('load', function(e) {
+			self.ctrl.update(100);
+			var canvas = self.ctrl.ctx.canvas;
+			canvas.parentNode.removeChild(canvas);
+		},false)
+
+		xhr.open("POST","");
+		// 响应头部
+		xhr.overrideMimeType('text/plain; charset=x-user-defined-binary');
+		reader.onload = function(evt) {
+			// xhr.sendAsBinary(evt.target.result); // 方法已被弃用
+			xhr.send(evt.target.result);
+		};
+		reader.readAsBinaryString(file);
+	}
+
+	var fileSelect = document.getElementById('fileSelect'),
+		fileElem = document.getElementById('fileElem');
+
+	fileSelect.addEventListener('click',function(e){
+		if(fileElem) {
+			fileElem.click();
+		}
+		e.preventDefault();
+	});
+
+	function handlFiles(files) {
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var imageType = /^image\//;
+		
+			if ( !imageType.test(file.type) ) {
+				continue;
+			}
+
+			var img = document.createElement('img');
+			img.classList.add("obj"); 
+			img.file = file; 
+			preview.appendChild(img); 
+
+			var reader = new FileReader();
+			reader.onload = (function(aImg) {
+				return function(e) {
+					aImg.src = e.target.result;
+				};
+			})(img);
+			reader.readAsDataURL(file); 
+		}
+	}
+	var preview = document.getElementById('preview');
+</script>
+</html>

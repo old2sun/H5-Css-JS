@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drawImage</title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<p>视频：</p>
+	<video id="video1" controls width="270" autoplay>
+		<source src="../video/mov_bbb.mp4" type="video/mp4">
+		<source src="../video/mov_bbb.ogg" type="video/ogg">
+		<source src="../video/mov_bbb.webm" type="video/webm">
+	</video>
+	<p>绘制图片</p>
+	<canvas id='myCanvas' width="270" height="135" style="border: 1px #d3d3d3 solid ">不支持浏览器</canvas>
+</body>
+<script type="text/javascript">
+	var v = document.getElementById('video1');
+	var c = document.getElementById('myCanvas');
+	var ctx = c.getContext('2d');
+	var img = new Image();
+
+	// 每20毫秒执行一次绘制图片 ()
+	var i = window.setInterval(function() {
+			ctx.drawImage(v,0,0,270,135);
+		},20);
+	v.addEventListener('play',function() {
+		// 绘制图片，处理代码放这里会报错
+	});
+	v.addEventListener('pause',function(){
+		window.clearInterval(i);
+	});
+	v.addEventListener('ended',function(){
+		clearInterval(i);
+	});
+</script>
+</html>

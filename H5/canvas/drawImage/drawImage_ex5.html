@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drawImage</title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<canvas id='myCanvas' width="300" height="300" style="border: 1px #ccc solid ">不支持浏览器</canvas>
+</body>
+<script type="text/javascript">
+	var c = document.getElementById('myCanvas');
+	var ctx = c.getContext('2d');
+	var img = new Image();
+
+	var imgData = ctx.createImageData(200,100); 
+
+	for(var i=0,t=255;i<imgData.data.length;i+=4) {
+		imgData.data[i+0] = 255;
+		imgData.data[i+1] = 100;
+		imgData.data[i+2] = 0;
+		imgData.data[i+3] = 255;
+	}
+
+	ctx.putImageData(imgData,50,10);
+
+	// 新建一个尺寸与 imgData 一致的新对象，但不会复制原本像素数据
+	var imgData2 = ctx.createImageData(imgData);
+	
+	for(var i=0,t=255;i<imgData2.data.length;i+=4) {
+		imgData2.data[i+0] = 155;
+		imgData2.data[i+1] = 200;
+		imgData2.data[i+2] = 155;
+		imgData2.data[i+3] = 155;
+	}
+
+	ctx.putImageData(imgData2,50,160);
+</script>
+</html>

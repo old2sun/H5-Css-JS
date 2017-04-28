@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drawImage</title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<canvas id='myCanvas' width="300" height="300" style="border: 1px #ccc solid ">不支持浏览器</canvas>
+</body>
+<script type="text/javascript">
+	var c = document.getElementById('myCanvas');
+	var ctx = c.getContext('2d');
+	var img = new Image();
+
+	// imageData 像素数据
+	var imgData = ctx.createImageData(200,100); // 创建宽200高100的 ImageData 对象
+	
+	// imageData通过data属性存储数组拼接颜色，4个颜色一组	
+	// for(var i=0;i<imgData.data.length;i+=4) {
+	// 	imgData.data[i+0] = 255;
+	// 	imgData.data[i+1] = 100;
+	// 	imgData.data[i+2] = 0;
+	// 	imgData.data[i+3] = 255;
+	// }
+
+	for(var i=0,t=255;i<imgData.data.length;i+=4) {
+		if(t<=0) t=255;
+		imgData.data[i+0] = 255-t;
+		imgData.data[i+1] = t;
+		imgData.data[i+2] = 255-t;
+		imgData.data[i+3] = 255;
+		--t;
+	}
+	// ctx.putImageData(imgData,50,60); // 把imgData放到画布坐标(50,60)
+	
+	// putImageData(imgData,x,y,clip_X,clip_Y,clip_Width,clip_height)
+	ctx.putImageData(imgData,60,60,50,0,100,100); // 添加其他参数与drawImage相似
+	
+	console.log("宽度是" + imgData.width + "，高度是" + imgData.height );
+	
+</script>
+</html>

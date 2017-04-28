@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示文件数量和大小</title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<form name='uploadForm'>
+		<fieldset>
+			<legend>示例</legend>
+				<p>
+					<input id='uploadInput' type="file" name="myFiles" onchange='updateSize()' multiple>
+					selected files:
+					<span id='fileNum'>0</span>; total size:
+					<span id='fileSize'>0</span>
+				</p>
+				<p>
+					<input type="submit" value="send file">
+				</p>
+		</fieldset>
+	</form>
+</body>
+<script type="text/javascript">
+	// 显示文件大小
+
+	function updateSize() {
+		var nBytes = 0,
+			oFiles = document.getElementById("uploadInput").files, // 文件数组集合
+			nFiles = oFiles.length;	// 文件个数
+		for(var nFileId = 0; nFileId < nFiles; nFileId++) {
+			nBytes += oFiles[nFileId].size; // 文件大小
+		}
+
+		var sOutput = nBytes + 'bytes';
+		var aMultiples = ["KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"], 
+			nMuliple = 0, 
+			nApprox = nBytes / 1024;
+
+		for( ; nApprox>1; nApprox /= 1024,nMuliple++) {
+			// toFixed() 四舍五入保留小数点
+			sOutput = nApprox.toFixed(3) + ' ' + aMultiples[nMuliple] + '(' + nBytes + 'bytes)';
+		}
+
+		document.getElementById("fileNum").innerHTML = nFiles;
+		document.getElementById("fileSize").innerHTML = sOutput;
+	}
+</script>
+</html>

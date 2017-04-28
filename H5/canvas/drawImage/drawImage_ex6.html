@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drawImage</title>
+	<style type="text/css">
+	
+	</style>
+</head>
+<body>
+	<img src="pic/o_avatar.jpg"; id='img'>
+	<canvas id='myCanvas' width="300" height="600" style="border: 1px #ccc solid ">不支持浏览器</canvas>
+</body>
+<script type="text/javascript">
+	var c = document.getElementById('myCanvas');
+	var ctx = c.getContext('2d');
+	var img = document.getElementById('img');
+	
+	img.onload = function() {
+		ctx.drawImage(img,10,10);
+
+		// ctx.getImageData(x,y,width,height) 复制获取已有 imageData 对象.
+		// imData 存在跨域问题，这个示例要在服务器环境中运行
+		var imgData = ctx.getImageData(0,0,c.width,c.height);
+
+		ctx.putImageData(imageData,0,300);
+	}
+	
+</script>
+</html>
