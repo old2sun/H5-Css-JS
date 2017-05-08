@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>路径</title>
+</head>
+<body>
+	<svg>
+		<!-- 控制文本各种样式的文本标签 -->
+		<text x=0 y=15 fill=crimson>SVG is a good thing</text>
+	</svg>
+	<svg>
+		<!-- 旋转文本,后两个分别是向 y轴 和 x轴移动,
+		它们的坐标系与web不一样,是和数学坐标系一致 -->
+		<text x=0 y=15 fill=crimson transform="rotate(30 20,40)">SVG is a good thing</text>
+	</svg>
+	<svg>
+		<!-- 路径文本 -->
+		<defs>
+			<path id='path1' d='M75,20 a1,1 0 0,0 100,0' />
+		</defs>
+		<text x=10 y=100 style='fill:red;'>
+			<textPath xlink:href='#path1'>svg mistery i don't know</textPath>
+		</text>
+	</svg>
+	<svg>
+		<!-- 文本小组 -->
+		<text x=10 y=20 fill=crimson>SVG is complicated:
+			<tspan x=10  y=45>first line<tspan>
+			<tspan x=10  y=75>second line<tspan>
+		</text>
+	</svg>
+	<svg>
+		<!-- 链接文本，通过xlink:href 这个属性 -->
+		<a xlink:href="first-svg.html" target="_blank">
+			<text x=0 y=15 fill=red>I  Love SVG </text>
+		</a>
+	</svg>
+</body>
+</html>

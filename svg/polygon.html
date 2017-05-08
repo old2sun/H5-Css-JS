@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多边形</title>
+</head>
+<body>
+	<svg style='height:250px'>
+		<!-- 多边形标签,point 是它的专有属性,
+		示例中每一对数字代表每个点的坐标轴,
+		逗号分隔x坐标和y坐标 -->
+		<polygon points="200,10 250,190 160,211" 
+		style="stroke-width:2;stroke:lime;fill:purple"	/>
+	</svg>
+	<svg>
+		<!-- 直角三角 -->
+		<polygon points='10,10 10,120 130,120'
+		style="stroke-width:2;stroke:yellowgreen;fill:orange;fill-rule:evenodd;"	/>
+	</svg>
+	<svg style='height:250px'>
+		<!-- 不规则多边形 -->
+		<polygon points="220,10 300,210 170,250 123,234"
+		style="stroke-width:2;stroke:purple;fill:lime"; />
+	</svg>
+	<svg style='height:250px'>
+		<!-- 星星 -->
+		<polygon points='100,10 40,180 190,60 10,60 160,180'
+		style="stroke-width:2;stroke:purple;fill:lime";	/>
+	</svg>
+	<svg style='height:250px'>
+		<!-- 空心星星,PS: fill-rule判断相交路径而形成的图形内部 -->
+		<polygon points='100,10 40,180 190,60 10,60 160,180'
+		style="stroke-width:2;stroke:orange;fill:yellowgreen;fill-rule:evenodd;"	/>
+	</svg>
+</body>
+</html>
