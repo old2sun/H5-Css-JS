@@ -1,0 +1,10 @@
+.parent .child {
+  color: #f00; }
+
+.demo {
+  /* do something */
+  animation: motion 3s infinite; }
+@keyframes motion {
+  /* something style */ }
+
+/*# sourceMappingURL=@at-root.css.map */

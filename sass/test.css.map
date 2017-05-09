@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAQ,qBAAU,CCIlB,IAAK,CACJ,UAAU,CAAC,GAAG,CAEf,GAAI,CACH,KAAK,CAAC,IAAI,CDNX,IAAK,CAEJ,KAAK,CAAC,KAAK,CACX,gBAAgB,CAAE,GAAG",
+"sources": ["_import.scss","_basic.scss"],
+"names": [],
+"file": "test.css"
+}

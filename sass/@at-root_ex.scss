@@ -1,0 +1,19 @@
+// some example
+
+.child {
+	@at-root .parent & {
+		color:#f00;
+	}
+}
+
+.demo {
+	/* do something */
+
+	animation:motion 3s infinite;
+
+	@at-root {
+		@keyframes motion {
+			/* something style */ 
+		}
+	} 
+}

@@ -1,0 +1,12 @@
+@import url(test.css);
+/*note (be translated)*/
+body {
+  background: red; }
+
+div {
+  color: blue; }
+
+body {
+  display: none; }
+
+/*# sourceMappingURL=style.css.map */
