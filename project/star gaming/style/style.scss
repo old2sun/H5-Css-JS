@@ -1,22 +1,38 @@
 $width: 1000px !default;
-$color:#0067b5 !default;
+$color: #0067b5 !default;
+$intro: intro;
+$cont: cont;
+$image: image;
 
 *{margin:0;padding:0;}
 a{text-decoration:none;}
-html{height:100%;}
-body{height:100%;}
+html{height:100%;overflow-x:hidden;}
+body{min-width:$width;height:100%;}
 %containerStyle {
+	overflow: hidden;
 	height:100%;
 	background-color: $color;
 }
-.container-intro {
+.container-#{$intro} {
 	@extend %containerStyle;
 	.main {
 		position: relative;
 		width: $width;
 		margin: 0 auto;
 		height: 100%;
-		background: url(img/back-1.jpg) center no-repeat;
+		dl {
+			text-align: center;
+			color: #fff;
+			a {
+				color: #fff;
+			}
+			dt {
+
+			}
+			dd {
+
+			}
+		}
 		.arrow {
 			display: block;
 			position: absolute;
@@ -33,11 +49,18 @@ body{height:100%;}
 		}
 	}
 }
-.container-cont {
+.container-#{$cont} {
 	@extend %containerStyle;
 	background-color:#f48e21;
 }
-.container-image {
+.container-#{$image} {
 	@extend %containerStyle;
 	background-color: #21a7f4;
+}
+$contain-images: ($intro, back-1), ($cont, back-2), ($image, back-3);
+@each $class, $img in $contain-images {
+	.container-#{$class} {
+		background: url(img/#{$img}.jpg) center no-repeat;
+		background-size:100%;
+	}
 }

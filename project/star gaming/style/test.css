@@ -6,12 +6,15 @@ a {
   text-decoration: none; }
 
 html {
-  height: 100%; }
+  height: 100%;
+  overflow-x: hidden; }
 
 body {
+  min-width: 1000px;
   height: 100%; }
 
 .container-intro, .container-cont, .container-image {
+  overflow: hidden;
   height: 100%;
   background-color: #0067b5; }
 
@@ -19,8 +22,12 @@ body {
   position: relative;
   width: 1000px;
   margin: 0 auto;
-  height: 100%;
-  background: url(img/back-1.jpg) center no-repeat; }
+  height: 100%; }
+  .container-intro .main dl {
+    text-align: center;
+    color: #fff; }
+    .container-intro .main dl a {
+      color: #fff; }
   .container-intro .main .arrow {
     display: block;
     position: absolute;
@@ -40,5 +47,17 @@ body {
 
 .container-image {
   background-color: #21a7f4; }
+
+.container-intro {
+  background: url(img/back-1.jpg) center no-repeat;
+  background-size: 100%; }
+
+.container-cont {
+  background: url(img/back-2.jpg) center no-repeat;
+  background-size: 100%; }
+
+.container-image {
+  background: url(img/back-3.jpg) center no-repeat;
+  background-size: 100%; }
 
 /*# sourceMappingURL=test.css.map */
