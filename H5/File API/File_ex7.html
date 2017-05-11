@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异步文件上传</title>
+</head>
+<script type="text/javascript">
+	// 需要 ajax，无法验证，思路清晰，API很迷 
+
+	function sendFile(file) {
+		var url = '/index.php';
+		var xhr = new XMLHttpRequest();
+		var fd = new FormData();
+
+		xhr.open("POST", url, true);
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				console.log(xhr.responseText);
+				console.log(readyState);
+			};
+		};
+		// append() 往FormData对象里添加键值
+		fd.append("myFile",file);
+		xhr.send(fd);
+	}
+
+	window.onload = function() {
+		var dropzone = document.getElementById("dropzone");
+		dropzone.ondrapover = dropzone.ondragenter = function() {
+			event.stopPropagation();
+			event.preventDefault();
+		};
+
+		dropzone.ondrop = function(event) {
+			event.stopPropagation();
+			event.preventDefault();
+
+			var fileArray = event.dataTransfer.files;
+			for (var i = 0; i<fileArray.length; i++) {
+				sendFile(filesArray[i]);
+			}
+		};
+	}
+</script>
+<body>
+	<div>
+		<div id="dropzone" style="margin: 30px;width: 500px;height: 300px;border: 1px dotted grey">
+			Drap & drop your file here...
+		</div>
+	</div>
+</body>
+</html>

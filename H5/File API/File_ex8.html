@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示PDF</title>
+	<style type="text/css">
+		#viewer {
+			width: 500px;
+			height: 500px;
+		}
+	</style>
+</head>
+<body>
+	<iframe id='viewer'></iframe>
+	<form name='uploadForm'>
+		<fieldset>
+			<legend>示例</legend>
+				<!-- accept 属性限制图像类型 -->
+				<input type="file" id="fileElem" value="send file" multiple style="display:none;" onchange="handleFiles(this.files)">
+				<a href="#" id="fileSelect">Select some files</a>
+				<div id="fileList">
+					<p>No files selected</p>
+				</div>
+		</fieldset>
+	</form>
+	<div id='preview'></div>
+</body>
+<script type="text/javascript">
+	// 获得 window.URL 对象
+	window.URL = window.URL || window.webkitURL;
+
+	var fileSelect = document.getElementById('fileSelect'),
+		fileElem = document.getElementById('fileElem');
+		fileList = document.getElementById('fileList');
+		iframe = document.getElementById('viewer');
+
+	fileSelect.addEventListener('click',function(e){
+		if(fileElem) {
+			fileElem.click();
+		}
+		e.preventDefault();
+	},false);
+
+	function handleFiles(files) {
+		if (!files.length) {
+			fileList.innerHTML = "<p>No files selected!</p>";
+		} else {
+			var list = document.createElement('ul');
+			for( var i = 0; i < files.length; i++ ){
+				var li = document.createElement('li');
+				list.appendChild(li);
+
+				// 获取路径
+				var obj_url = window.URL.createObjectURL(files[i]);
+				// 把路径放到 iframe 的 src 属性; 貌似只能火狐可以
+				iframe.setAttribute('src', obj_url);
+				window.URL.revokeObjectURL(obj_url); // 释放对象URL,放弃对文件的引用
+
+				var info = document.createElement('span');
+				info.innerHTML = files[i].name + ": " + files[i].size + " bytes";
+				li.appendChild(info);
+			}
+			fileList.appendChild(list);
+		}
+	}
+</script>
+</html>

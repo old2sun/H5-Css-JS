@@ -8,6 +8,17 @@ $image: image;
 a{text-decoration:none;}
 html{height:100%;overflow-x:hidden;}
 body{min-width:$width;height:100%;}
+
+/* move */ 
+.rotate {
+	animation: rotate 5s linear infinite;
+}
+@keyframes rotate {
+	from{transform:rotate(0);}
+	50%{transform:rotate(180deg);}
+	to {transform:rotate(360deg);}
+}
+
 %containerStyle {
 	overflow: hidden;
 	height:100%;
@@ -21,17 +32,55 @@ body{min-width:$width;height:100%;}
 		margin: 0 auto;
 		height: 100%;
 		dl {
+			position: absolute;
+			left: 50%;
+			top:40%;
+			margin-left: -70px;
 			text-align: center;
+			text-shadow: 2px 2px 2px #000;
+			font-size: 25px;
 			color: #fff;
 			a {
 				color: #fff;
 			}
 			dt {
-
+				margin-bottom: 10px;
 			}
-			dd {
-
+			@at-root b {
+				display: inline-block;
+				position: absolute;
+				right: 15%;
+				top:10%;
+				width: 70px;
+				height: 60px;
+				background: url(img/sm-title.png) center no-repeat;
+				background-size: 100%;
 			}
+			@at-root i {
+				display: inline-block;
+				position: absolute;
+				right: 8%;
+				top:5%;
+				width: 40px;
+				height: 40px;
+				overflow: hidden;
+				border: 2px solid #fff;
+				cursor: pointer;
+				border-radius: 50%;
+				background-color: #000;
+				&:after {
+					content: "";
+					display: block;
+					margin: 0 auto;
+					margin-top: 5px;
+					width: 30px;
+					height: 30px;
+					overflow: hidden;
+					border-radius: 50%;
+					background: url(img/sm-music.png) center no-repeat;
+					background-size: 100%;
+				}
+			} 
 		}
 		.arrow {
 			display: block;
