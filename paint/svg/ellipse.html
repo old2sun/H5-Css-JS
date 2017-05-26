@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>椭圆</title>
+</head>
+<body>
+	<svg>
+		<!-- 椭圆标签，它的属性与圆相似，除了半径的设置
+		rx和ry分别设置椭圆的x轴半径和y轴半径 -->
+		<ellipse cx='160' cy='80' rx='100' ry='50' 
+		style='stroke-width:2;stroke:purple;fill:yellow;'/>
+	</svg>
+	<svg>
+		<!-- 累叠而上三个圆 -->
+		<ellipse cx=240 cy=100 rx=220 ry=30 fill=purple />
+		<ellipse cx=220 cy=70 rx=190 ry=20 fill=lime />
+		<ellipse cx=210 cy=45 rx=170 ry=15 fill=yellow />
+	</svg>
+	<svg>
+		<!-- 组合两个圆 -->
+		<ellipse cx=140 cy=50 rx=120 ry=30 fill=orange />
+		<ellipse cx=120 cy=50 rx=90 ry=20 fill=white />
+	</svg>
+</body>
+</html>
