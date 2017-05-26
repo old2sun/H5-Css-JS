@@ -1,4 +1,5 @@
 // 异步对象
+// new Promise(fn)
 
 // 传统的异步执行程序是一个回调地狱
 function task(i) {console.log(`task_${i} 执行完毕`)}
