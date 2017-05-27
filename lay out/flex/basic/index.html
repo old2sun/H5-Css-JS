@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>flex的基本介绍</h1>
+	<hr>
+	<p> flex 即 flexible box 是弹性布局, 
+		任何一个容器都可以指定为 flex 布局,
+		行内元素也可以设置,
+		设置 flex 布局后, 子元素的 float、clear、vertical-align 属性无效</p>
+	<p>设置 flex 后, 这些元素称为 flex容器, 而它们的所有子元素自动成为容器成员, 称为 flex item </p>
+	<div class="pre">
+		<pre>
+			.box {
+				display: -webkit-flex; /* 兼容 webkit 内核 */
+				display: flex;
+			}
+		</pre>
+		<pre>
+			.inline-box {
+				display: inline-flex; /* 行内元素 flex*/
+			}
+		</pre>
+	</div>
+	<h1>flex的属性</h1>
+	<hr>
+	<p>容器上的6个属性</p>
+	<ul>
+		<li><a href="#flex-direction">flex-direction 主轴的排列方向</a></li>
+		<li><a href="#flex-warp">flex-warp</a></li>
+		<li><a href="#flex-flow">flex-flow</a></li>
+		<li><a href="#justify-content">justify-content</a></li>
+		<li><a href="#align-items">align-items</a></li>
+		<li><a href="#align-content">align-content</a></li>
+	</ul>
+
+	<h2 id='flex-direction'>1、flex-direction属性</h2>
+	<p>flex-direction 有4个值, 决定 主轴水平方向和排列起点 或 垂直方向和排列起点</p>
+	<p>
+		.box { flex-direction: row || row-reverse || column || column-reverse; }
+	</p>
+	<div class="box">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+	</div>
+
+	<h2 id='flex-warp'>2、flex-warp</h2>
+	<p>flex-warp 有3个值, 定义元素如果在一条轴线下排不下如何换行</p>
+	<p>
+		.box { flex-warp: nowrap || wrap || warp-reverse; }
+	</p>
+	<div class="box">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+		<span>6</span>
+		<span>7</span>
+		<span>8</span>
+		<span>9</span>
+		<span>10</span>
+	</div>
+
+	<h2 id='flex-flow'>3、flex-flow</h2>
+	<p>flex-flow 为 flex-direction 和 flex-warp 的简写形式</p>
+	<p>
+		.box { flex-flow: [flex-direction] || [flex-warp]; }
+	</p>
+	<div class="box">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+	</div>
+
+	<h2 id='justify-content'>4、justify-content</h2>
+	<p>flex-flow 有5个值, 决定元素主轴方向的对齐方式, 它们具体的对齐方式与 主轴的水平方向有关系</p>
+	<p>
+		.box { justify-content: flex-start || flex-end || center || sapce-between || space-around ; }
+	</p>
+	<div class="box">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+	</div>
+
+	<h2 id='align-items'>5、align-items</h2>
+	<p>align-items 有5个值, 决定元素交叉轴方向的对齐方式</p>
+	<p>
+		.box { align-items: stretch || flex-start || flex-end || center || baseline ; }
+	</p>
+	<div class="box">
+		<span>1</span>
+		<span class="height_200">2</span>
+		<span class="height_300">3</span>
+		<span>4</span>
+	</div>
+
+	<h2 id='align-content'>6、align-content</h2>
+	<p>flex-flow 有6个值, 定义多条轴线的对齐方式, 如果只有一条轴线该属性不起作用</p>
+	<p>
+		.box { justify-content: stretch || flex-start || flex-end || center || sapce-between || space-around ; }
+	</p>
+	<div class="box box_align-content height_1000">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+		<span>6</span>
+		<span>7</span>
+		<span>8</span>
+		<span>9</span>
+		<span>10</span>
+		<span>11</span>
+		<span>12</span>
+		<span>13</span>
+		<span>14</span>
+		<span>15</span>
+		<span>16</span>
+		<span>17</span>
+		<span>18</span>
+		<span>19</span>
+		<span>20</span>
+	</div>
+
+	<h1>元素的属性</h1>
+	<hr>
+	<p>设置元素的6个属性</p>
+	<ul>
+		<li><a href="#order">order 主轴的排列方向</a></li>
+		<li><a href="#flex-grow">flex-grow</a></li>
+		<li><a href="#flex-shrink">flex-shrink</a></li>
+		<li><a href="#flex-basis">justify-content</a></li>
+		<li><a href="#flex">flex</a></li>
+		<li><a href="#align-self">align-self</a></li>
+	</ul>
+</body>
+</html>

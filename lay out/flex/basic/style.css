@@ -1,0 +1,121 @@
+a{
+	text-decoration: none;
+	color: #000;
+}
+body {
+	margin: 0 auto;
+	padding: 0 50px;
+	color: #fff;
+	background-color: #3b3838;
+}
+h1 {
+	margin-top: 50px;
+	margin-bottom: 10px;
+	padding: 10px 20px;
+	border-radius: 6px;
+	font-size: 24px;
+	background-color: #6f4b4b;
+
+}
+h2 {
+	margin-top: 50px;
+	margin-bottom: 10px;
+	padding: 10px 20px;
+	border-radius: 6px;
+	font-size: 18px;
+	background-color: #6f4b4b;
+}
+hr {
+	height: 5px;
+	margin-bottom: 15px;
+	border: 1px solid gray;
+	background-color: #5d4623;
+}
+p,pre{
+	padding: 10px 20px;
+	border-radius: 8px;
+	background-color: #916c31;
+}
+pre {
+	font-size: 14px;
+	background-color: #537544;
+}
+ul {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 8px;
+	background-color: #c7b393;
+}
+li {
+	margin-bottom: 10px;
+}
+.pre {
+	margin-top: 30px;
+	padding: 0 50px;
+}
+
+.box {
+	display: -webkit-flex; 
+	display: flex;
+
+	flex-direction: row; /* row为水平左往右排,colum为垂直,reverse为反正起点 */
+	/*flex-direction: row-reverse; */
+	/*flex-direction: column;*/
+	/*flex-direction: column-reverse;*/
+
+	flex-wrap: nowrap; /* wrap 为换行, 如果不换行元素自适应宽度 */
+	/*flex-wrap: wrap;*/
+	/*flex-wrap: wrap-reverse;*/
+
+	flex-flow: row-reverse nowrap; /* 简写 */
+
+	justify-content: flex-start; /* 属性值分别从左往右对齐, 右往左, 居中, 两端对齐, 元素两侧以相同间隔分开 */
+	/*justify-content: flex-end;*/
+	/*justify-content: center;*/
+	/*justify-content: space-between;*/
+	/*justify-content: space-around;*/
+
+	align-items: stretch; /* 默认值, 如果元素没有高度或高度auto, 它们将占满整个容器的高度 */
+	align-items: flex-start;	/* 对齐顶部 */
+	/*align-items: flex-end;*/	/* 对齐底部 */
+	/*align-items: center;*/	/* 	垂直居中 */
+	/*align-items: baseline;*/ /* 对齐文字基线 */
+
+	align-content: stretch; /*占满交叉轴*/
+	/*align-content: flex-start;*/ /* 对齐交叉轴起点 */
+	align-content: flex-end; /*对齐交叉轴终点*/
+	/*align-content: center;*/	/*对齐交叉轴中线*/
+	/*align-content: space-between;*/  /*对齐交叉轴两端对齐*/
+	/*align-content: space-around;*/ /*交叉轴线两侧相等距离相隔*/
+	
+	background-color: #efc178;
+}
+.box_align-content {
+	flex-flow: row wrap;
+}
+
+.box span{
+	display: block;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	border: 3px solid #ccc;
+	text-align: center;
+	font-size: 16px;
+	background-color: #3b8844;
+}
+.box .height_200 {
+	padding-top: 100px;
+	height: 100px;
+	font-size: 20px;
+}
+.box .height_300 {
+	height: 300px;
+	font-size: 25px;
+}
+.height_1000 {
+	height: 500px;
+}
+.inline-box {
+	display: inline-flex;
+}

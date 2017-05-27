@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en>
+<head>
+	<meta charset="UTF-8">
+	<title>"循环</title>
+	<script src="../2.1.8/vue.min.js"></script>
+</head>
+<body>
+	<div id ='app'>
+		<ol>
+			<li v-for='site in sites'>
+				{{ site.name }}
+			</li>
+		</ol>
+	</div>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				sites: [
+						
+					{name : 'Runoob'},
+					{name : 'Google'},
+					{name : 'Taobap'}
+					
+				]
+			}
+		})
+	</script>
+</body>
+</html>
