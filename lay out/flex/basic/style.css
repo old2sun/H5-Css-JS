@@ -90,8 +90,32 @@ li {
 	
 	background-color: #efc178;
 }
+.box .items {
+	order: 1;
+	flex-grow: 2;
+}
+.item_flex-shrink {
+	flex-shrink: 6;
+}
+.items_flex-basis {
+	flex-basis: 200px;
+}
+.items_flex {
+	flex: 2 2 auto; /* 有剩余大1倍, 不够位置缩小1倍 */
+}
+.items_align-self {
+	align-self: center;
+}
+
+.box .item_flex-shrink_0 {
+	flex-shrink: 0;
+	background-color: #158358;
+}
 .box_align-content {
 	flex-flow: row wrap;
+}
+.items_flex-grow_4 {
+	flex-grow: 4; 
 }
 
 .box span{

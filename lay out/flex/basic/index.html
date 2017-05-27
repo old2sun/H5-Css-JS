@@ -144,5 +144,96 @@
 		<li><a href="#flex">flex</a></li>
 		<li><a href="#align-self">align-self</a></li>
 	</ul>
+
+	<h2 id='order'>1、order</h2>
+	<p>order 定义元素排列的顺序, 值越小排列越前, 默认为 0</p>
+	<p>
+		.items { order: [number] }
+	</p>
+	<div class="box">
+		<span>1</span>
+		<span class="items">2</span>
+		<span>3</span>
+		<span>4</span>
+	</div>
+
+	<h2 id='flex-grow'>2、flex-grow</h2>
+	<p>flex-grow 定义元素的放大比例, 默认为0, 即有剩余空间也不放大, 若所有元素放大比例相同, 则同等分, 否则值大多少, 就按几倍分</p>
+	<p>
+		.items { flex-grow: [number] }
+	</p>
+	<div class="box">
+		<span>1</span>
+		<span class="items">2</span>
+		<span>3</span>
+		<span class="items_flex-grow_4">4</span>
+		<span>5</span>
+	</div>
+
+	<h2 id='flex-shrink'>3、flex-shrink</h2>
+	<p>flex-shrink 定义元素的缩小比例, 默认为1, 即空间不足, 该元素将缩小, 若设置为0, 即使空间不足也不缩小。 注意, 该属性设置负值无效</p>
+	<p>
+		.items { flex-shrink: [number] }
+	</p>
+	<div class="box">
+		<span class="item_flex-shrink_0">1</span>
+		<span class="item_flex-shrink_0">2</span>
+		<span class="item_flex-shrink_0">3</span>
+		<span class="item_flex-shrink_0">4</span>
+		<span>5</span>
+		<span class="item_flex-shrink">6</span>
+		<span>7</span>
+		<span>8</span>
+		<span>9</span>
+		<span>10</span>
+		<span>11</span>
+		<span>12</span>
+		<span>14</span>
+		<span>15</span>
+		<span>16</span>
+		<span>17</span>
+		<span>18</span>
+		<span>19</span>
+		<span>20</span>
+	</div>
+
+	<h2 id='flex-basis'>4、flex-basis</h2>
+	<p>flex-basis 定义元素在分配空间前, 占据主轴的空间, 默认值为 auto, 即为项目本来的大小</p>
+	<p>
+		.items { flex-basis: [length] | auto }
+	</p>
+	<div class="box">
+		<span>1</span>
+		<span class="items_flex-basis">2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+	</div>
+
+	<h2 id='flex'>5、flex</h2>
+	<p>flex 属性是 flex-grow、flex-shirnk、flex-basis 的简写形式, 默认值为 0 1 auto</p>
+	<p>
+		.items { flex-basis: none | [flex-grow] | [flex-shrink] | [flex-grow] }
+	</p>
+	<div class="box">
+		<span>1</span>
+		<span class="items_flex">2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+	</div>
+
+	<h2 id='align-self'>6、align-self</h2>
+	<p>align-self 属性允许单个元素与其他元素不一样的对齐方式。 默认值为 stretch, 继承父元素的 align-items, 可覆盖, 没有就默认值。 它的属性值与 align-items 相同 </p>
+	<p>
+		.items { align-self: none | [flex-grow] | [flex-shrink] | [flex-grow] }
+	</p>
+	<div class="box height_1000">
+		<span>1</span>
+		<span class="items_align-self">2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+	</div>
 </body>
 </html>
