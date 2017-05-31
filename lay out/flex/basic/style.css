@@ -64,7 +64,7 @@ li {
 	/*flex-direction: column-reverse;*/
 
 	flex-wrap: nowrap; /* wrap 为换行, 如果不换行元素自适应宽度 */
-	/*flex-wrap: wrap;*/
+	flex-wrap: wrap;
 	/*flex-wrap: wrap-reverse;*/
 
 	flex-flow: row-reverse nowrap; /* 简写 */
@@ -85,7 +85,7 @@ li {
 	/*align-content: flex-start;*/ /* 对齐交叉轴起点 */
 	align-content: flex-end; /*对齐交叉轴终点*/
 	/*align-content: center;*/	/*对齐交叉轴中线*/
-	/*align-content: space-between;*/  /*对齐交叉轴两端对齐*/
+	align-content: space-between;  /*对齐交叉轴两端对齐*/
 	/*align-content: space-around;*/ /*交叉轴线两侧相等距离相隔*/
 	
 	background-color: #efc178;

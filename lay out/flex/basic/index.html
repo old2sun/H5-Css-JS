@@ -120,27 +120,16 @@
 		<span>7</span>
 		<span>8</span>
 		<span>9</span>
-		<span>10</span>
-		<span>11</span>
-		<span>12</span>
-		<span>13</span>
-		<span>14</span>
-		<span>15</span>
-		<span>16</span>
-		<span>17</span>
-		<span>18</span>
-		<span>19</span>
-		<span>20</span>
 	</div>
 
 	<h1>元素的属性</h1>
 	<hr>
 	<p>设置元素的6个属性</p>
 	<ul>
-		<li><a href="#order">order 主轴的排列方向</a></li>
+		<li><a href="#order">order 元素排列顺序</a></li>
 		<li><a href="#flex-grow">flex-grow</a></li>
 		<li><a href="#flex-shrink">flex-shrink</a></li>
-		<li><a href="#flex-basis">justify-content</a></li>
+		<li><a href="#flex-basis">flex-basis</a></li>
 		<li><a href="#flex">flex</a></li>
 		<li><a href="#align-self">align-self</a></li>
 	</ul>
@@ -224,9 +213,9 @@
 	</div>
 
 	<h2 id='align-self'>6、align-self</h2>
-	<p>align-self 属性允许单个元素与其他元素不一样的对齐方式。 默认值为 stretch, 继承父元素的 align-items, 可覆盖, 没有就默认值。 它的属性值与 align-items 相同 </p>
+	<p>align-self 属性允许单个元素与其他元素不一样的对齐方式。 默认值为 stretch, 继承父元素的 align-items, 可覆盖, 没有就默认值。 它的属性值与 align-items 相同。注意：如果有多条轴线, 可能无效 </p>
 	<p>
-		.items { align-self: none | [flex-grow] | [flex-shrink] | [flex-grow] }
+		.items { align-self: [align-items value] }
 	</p>
 	<div class="box height_1000">
 		<span>1</span>

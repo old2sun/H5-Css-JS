@@ -1,0 +1,126 @@
+/*demo1,平均分布局*/
+body {
+	background-color: #666
+}
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+}
+.grid-cell {
+	flex: 1;
+	margin: 5px;
+	background-color: #ddd;
+}
+
+/*demo2,百分比布局*/
+.u-1of2 {
+	flex: 0 0 50%;
+	background-color: green;
+}
+.u-full {
+	flex: 0 0 100%;
+	background-color: green;
+}
+.u-1of3 {
+	flex: 0 0 33.333%;
+	background-color: green;
+}
+.u-1of4 {
+	flex: 0 0 25%;
+	background-color: green;
+}
+
+/*demo3,圣杯布局*/
+.HolyGrail {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+header,
+footer {
+	flex: 1;
+	text-align: center;
+	background-color: #ddd;
+}
+.HolyGrail-body {
+	display: flex;
+	flex: 1;
+}
+.HolyGrail-content {
+	flex: 1;
+	text-align: center;
+	background-color: orange;
+}
+.HolyGrail-nav,
+.HolyGrail-ads {
+	flex: 0 0 12em;
+	text-align: center;
+	background-color: skyblue;
+}
+.HolyGrail-nav {
+	order: -1;
+}
+@media (max-width: 768px) {
+	.HolyGrail-body {
+		flex-direction: column;
+		flex: 1;
+	}
+	.HolyGrail-body, 
+	.HolyGrail-nav,
+	.HolyGrail-ads {
+		flex: auto;
+	}
+}
+
+/*demo4 表单控件消除间隔*/
+.InputAddOn {
+	display: flex;
+}
+.InputAddOn-field {
+	flex:　1;
+}
+
+/*demo5 悬挂式布局*/
+.Media {
+	display: flex;
+	align-items: flex-start;
+}
+.Media-figure {
+	margin-right: 1em;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	background-color: orange;
+}
+.Media-body {
+	flex: 1;
+}
+
+/*demo6 栏固定*/
+.Site {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+.Site-content {
+	flex: 1;
+}
+
+/*demo7 流式布局*/
+.parent {
+	width: 200px;
+	height: 150px;
+	padding:0;
+	background-color: #000;
+	display: flex;
+	flex-flow: row wrap;
+	align-content: flex-start;
+}
+.child {
+	flex: 0 0 25%;
+	height: 50px;
+	box-sizing: border-box;
+	list-style-type: none;
+	border: 1px solid red;
+	background-color: #fff;
+}
