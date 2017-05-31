@@ -2,7 +2,9 @@
 let demo1 = function(i) {return i + 1;}
 
 // 箭头函数 ES6 , (i) => i + 1 即 function(i) {return i + 1;}
+// demo3 和 demo2 一样, 只是更加的简写, 不过我个人觉得这样写太过简洁
 let demo2 = (i) => i + 1;
+let demo3 = i => i + 2;
 
 // ES5
 function demo4(x,y){
