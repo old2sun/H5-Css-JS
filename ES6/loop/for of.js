@@ -12,12 +12,7 @@ let arr2 = Array.from(str);	// [ 'c', 'a', 'i', 'j', 'u', 'n', 'y', 'e' ]
 let m = new Map([[1,2],[3,4],[4,9]]); 
 let m_output =  Array.from(m);	// [ [ 1, 2 ], [ 3, 4 ], [ 4, 9 ] ]
 
-
-
-
-
-
-
+    	
 
 
 

@@ -21,9 +21,8 @@ let str2 = `foo ${fn()} bar`; // foo Hello ES6 bar
 
 // -----------------------------------------------------
 
-// 
-
-
-
+let fn_body = 'return ' + '` Hello ${name}`'
+let func = new Function('name', fn_body); // 函数对象, 最后一个参数是执行函数体, 之前的都是参数
+func('BB'); // Hello BB	
 
 
