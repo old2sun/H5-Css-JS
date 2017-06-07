@@ -94,6 +94,7 @@ body{min-width:$width;height:100%;}
 			cursor: pointer;
 			text-align: center;
 			border-radius: 25px;
+			box-shadow: 0 0 5px 1px grey;
 			background-color:#fff;
 		}
 	}
@@ -112,4 +113,39 @@ $contain-images: ($intro, back-1), ($cont, back-2), ($image, back-3);
 		background: url(img/#{$img}.jpg) center no-repeat;
 		background-size:100%;
 	}
+}
+
+// news
+.container {
+	width: 990px;
+	margin: 0 auto;
+}
+.star-news {
+
+	.head {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		
+		dl:nth-child(1) {
+
+			dd {
+				background-color: #cc0000;	
+			}
+		}
+		dl:nth-child(2) {
+
+			dd {
+				background-color: skyblue;
+			}
+		}
+
+		dd {
+			width: 365px;
+			height: 260px;
+			padding: 10px;
+			color: #fff;
+		}
+
+	} 
 }

@@ -91,6 +91,7 @@ body {
     cursor: pointer;
     text-align: center;
     border-radius: 25px;
+    box-shadow: 0 0 5px 1px grey;
     background-color: #fff; }
 
 .container-cont {
@@ -110,5 +111,23 @@ body {
 .container-image {
   background: url(img/back-3.jpg) center no-repeat;
   background-size: 100%; }
+
+.container {
+  width: 990px;
+  margin: 0 auto; }
+
+.star-news .head {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between; }
+  .star-news .head dl:nth-child(1) dd {
+    background-color: #cc0000; }
+  .star-news .head dl:nth-child(2) dd {
+    background-color: skyblue; }
+  .star-news .head dd {
+    width: 365px;
+    height: 260px;
+    padding: 10px;
+    color: #fff; }
 
 /*# sourceMappingURL=test.css.map */

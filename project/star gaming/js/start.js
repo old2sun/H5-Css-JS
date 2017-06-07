@@ -6,16 +6,23 @@ $(document).ready(function(){
 	*/
 	let distanceH
 	$('html,body').scrollTop(0);
+	let LOCK = true;// 变量控制
 
 	// 滚动动画
 	$arrow.click(function() {
+		if(!LOCK) return false;
+		LOCK = false;
+
 		distanceH = $(window).height();
 
 		// 曲线救国, html兼容火狐, body谷歌
-		$('html,body').animate({scrollTop:distanceH},'normal');
+		$('html,body').animate({scrollTop:distanceH},'normal',function() {
+
+			LOCK = true;
+		});
 	});
 
-	let LOCK = true;// 变量控制
+	
 	let num = 0;
 	function scrollFunc(e) {
 		if(!LOCK) return false;
