@@ -15,6 +15,13 @@ let person = {
 }
 
 
+function obNum() {
+	let x = 1;
+	let y = 1;
+	return {x, y};	// { x: 1, y: 1 }
+}
+
+
 
 
 
