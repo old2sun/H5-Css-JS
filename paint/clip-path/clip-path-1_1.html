@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clip-path基本图形和路径</title>
+	<style type="text/css">
+		/*
+			clip-path 可以使用基本形状但不能使用 path()
+		*/
+		* {
+			margin: 0;
+		}
+
+		.cont {
+			padding: 10px;
+			border-bottom: 2px solid #ccc;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		.cont p {
+			overflow: hidden;
+		}
+
+		.cont img {
+			width: 200px;
+			height: 200px;
+			margin-right: 20px;
+			float: left;
+			clip-path: polygon(0% 5%, 100% 0%, 100% 85%, 65% 80%, 75% 100%, 40% 80%, 0% 75%);
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="cont">
+		<img src="img/img_2.jpg">
+		<p>在CSS中polygon()、circle()、ellipse()和inset()函数可以绘制基本形状。在CSS中的offset-path和shape-outside中都可以使用这四个图形函数，实现对应的路径动画以及文本围绕排版效果。他们虽然绘制基本形状，但也常将其称之为路径图形。那么什么是路径呢？</p>
+		
+	</div>
+</body>
+</html>

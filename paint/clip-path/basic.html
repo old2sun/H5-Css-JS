@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基本介绍</title>
+	<style type="text/css">
+		/*
+			clip-path: <clip-source> | <basic-shape> [ || <geometry-box>] | none 
+
+			clip-source: 内外部SVG 的 <clippath></clippath> 元素的 URL引用;
+			basis-shape: 使用一些基本形状函数创建一个形状，具体看 Css Shapes;
+			geometry-box: 是可选参数。如果和 basic-shape 一起使用,可为 basic-shape 的裁剪工作提供参考盒子。如果由自身指定，那么它会使用指定盒子形状作为裁剪的路径，包括任何（由 border-radius提供的）角的形状。
+
+		*/
+
+		.cont {
+			text-align: center;
+		}
+
+		.cont img {
+			-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+			clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		}
+	</style>
+</head>
+<body>
+	<div class="cont">
+		一个示例
+		<img src="img/img_1.jpg">
+	</div>
+</body>
+</html>

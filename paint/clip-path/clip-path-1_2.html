@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clip-path 基本图形和路径</title>
+	<style type="text/css">
+		/*
+			当我们需要画自定义的形状时候, clip-path就无法满足
+			此时可以通过 clip-path 的 url() 属性传一个带有 ID
+			属性名的 <clipPath>元素。
+
+			<clipPath> 是SVG的一个元素, 可以在这里通过 <path> 元素绘制图形
+		*/
+		* {
+			margin: 0;
+		}
+
+		.cont {
+			padding: 10px;
+			border-bottom: 2px solid #ccc;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		.cont p {
+			overflow: hidden;
+		}
+
+		.cont img {
+			width: 200px;
+			height: 200px;
+			margin-right: 20px;
+			float: left;
+			clip-path: url(#clip);			
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="cont">
+		<img src="img/img_2.jpg">
+		<p>在CSS中polygon()、circle()、ellipse()和inset()函数可以绘制基本形状。在CSS中的offset-path和shape-outside中都可以使用这四个图形函数，实现对应的路径动画以及文本围绕排版效果。他们虽然绘制基本形状，但也常将其称之为路径图形。那么什么是路径呢？</p>
+		
+	</div>
+
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 201 196.1" class="hide"> <title>bubble-path</title> <clipPath id="clip"> <path d="M100.5,39.47C100.5,58.3,83.36,74,60.58,77.64l16.85,19.9L33.94,76.25C14.47,70.92.5,56.47.5,39.47c0-21.52,22.39-39,50-39S100.5,17.95,100.5,39.47Z" fill="#fff" stroke="#000" stroke-miterlimit="10"></path> </clipPath> </svg>
+</body>
+</html>
