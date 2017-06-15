@@ -12,6 +12,17 @@ var objectSymbols = Object.getOwnPropertySymbols(obj);
 objectSymbols; // [ Symbol(a), Symbol(b) ]
 
 
+// Reflect.ownKeys 方法可以返回所有类型的键名
+let obj2 = {
+	[Symbol('my_key')]: 1,
+	enum: 2,
+	nonEnum: 3
+};
+
+Reflect.ownKeys(obj2); //  [ 'enum', 'nonEnum', Symbol(my_key) ]
+
+
+
 
 
 

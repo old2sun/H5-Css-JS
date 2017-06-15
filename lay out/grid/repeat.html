@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>重复网格轨道</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+
+		/*repeat 函数适用于创建尺寸相等的多个网格项目*/
+		/*第一个参数定义网格重复次数, 第二个参数定义每个轨道尺寸*/
+		grid-template-rows: repeat(4, 100px); /*重复4行*/
+		grid-template-columns: repeat(3, 1fr);/*重复3列*/
+
+
+		/*也可以用在轨道列表中, 头尾两列30宽, 中间3列 1fr*/
+		/* 1fr = (网格宽度-30px-30px) / 3 */
+		grid-template-columns: 30px repeat(3, 1fr) 30px;
+	}
+
+	.wrapper p {
+		margin: 1px;
+		padding: 3px;
+		text-align: center;
+		color: #fff;
+		background-color: orangered;
+	}
+
+	</style>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		<p>4</p>
+		<p>5</p>
+		<p>6</p>
+		<p>7</p>
+		<p>8</p>
+		<p>9</p>
+		<p>10</p>
+	</div>
+</body>
+</html>

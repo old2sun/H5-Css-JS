@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网格</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+		/*display: inline-grid;*/
+
+		/*可以固定单个元素的宽高*/
+
+		/*创建每一行的高度*/
+		grid-template-rows:50px 100px;
+
+		/*创建每列的宽, 定义多少列宽, 一行就排列多少列*/
+		grid-template-columns:90px 50px 120px;
+
+		/*弹列的网格轨道, 代表容器的可用空间（1+1+2=4）空间分成了4分, 类似 Flex 布局*/
+		grid-template-columns: 1fr 1fr 2fr;
+		/*当fr和其他长度单位结合在一起的时候, fr是基于网格可用空间计算*/
+		/*  这个示例  
+		1fr = (网格宽度 - 3rem - 网格宽度 *25%) / 3  */
+		grid-template-columns: 3rem 25% 1fr 2fr;
+
+	}
+
+	.wrapper p {
+		margin-bottom: 2px;
+		text-align: center;
+		color: #fff;
+		background-color: orangered;
+	}
+
+	</style>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		<p>4</p>
+		<p>5</p>
+		<p>6</p>
+	</div>
+</body>
+</html>

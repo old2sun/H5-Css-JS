@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网格线号码定位网格项目</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+
+		grid-template-rows: repeat(5, 200px);
+		grid-template-columns: 1fr 1fr 1fr;
+		
+	}
+
+	.wrapper .item-1 {
+
+		/*网格线就是代表线的开始、结束,两者之间就是网格列或行。
+		
+		每条线是从网格轨道开始, 网格的网线从1开始, 每条网格线逐渐增加 1 .
+		*/
+
+		/*如果网格跨度只有一行或一列, grid-row-end 和 grid-column-end 不是必需*/
+		grid-row-start: 2;
+		grid-row-end: 3;
+		grid-column-start: 2;
+		grid-column-end: 3;
+
+		background-color: skyblue;
+		
+	}
+
+	.wrapper .item-2 {
+
+		/*简写*/
+		/*一个值就是2个参数同个值, 两个值用 "/" 分开的就是开头、结尾网线号码*/
+		grid-row: 3;
+		grid-column: 3 / 4;
+
+		background-color: greenyellow;
+		
+	}
+
+	.wrapper .item-3 {
+
+		/*简写*/
+		/*如果是四个值, 就分别是行的开始号码, 列的开始号码, 行的结束号码, 列的结束号码 */
+		grid-area: 1 / 2 / 2 / 3;
+
+		background-color: crimson;
+		
+	}
+
+	.wrapper p {
+		margin: 1px;
+		padding: 3px;
+		text-align: center;
+		color: #fff;
+		background-color: orangered;
+		content: "\9650 ";
+	}
+
+	</style>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<p class="item-1">1</p>
+		<p class="item-2">2</p>
+		<p class="item-3">3</p>
+		<p>4</p>
+		<p>5</p>
+		<p>6</p>
+		<p>7</p>
+		<p>8</p>
+		<p>9</p>
+	</div>
+</body>
+</html>

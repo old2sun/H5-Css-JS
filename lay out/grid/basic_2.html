@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网格</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+		
+		/*可以通过函数创建网格轨道的最小或最大尺寸*/
+		/*它第一个参数定义最小值, 第二个定义最大值, auto值允许尺寸拉伸或挤压*/
+		grid-template-rows: minmax(100px, auto);
+		grid-template-columns: minmax(auto, 50%) 1fr 3em;
+	}
+
+	.wrapper p {
+		margin: 1px;
+		text-align: center;
+		color: #fff;
+		background-color: orangered;
+	}
+
+	</style>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		<p>minmax()函数接受两个参数：第一个参数定义网格轨道的最小值，第二个参数定义网格轨道的最大值。可以接受任何长度值，也接受auto值。auto值允许网格轨道基于内容的尺寸拉伸或挤压。在这个示例中，第一行的高度最小值是100px，但其最大值为auto，允许行高可以变大超过100px。第一列设置了最小值为auto，但它的最大值是50%，也就是列的最大宽度不会超过网格容器宽度的50%。。</p>
+		<p>5</p>
+		<p>6</p>
+	</div>
+</body>
+</html>
