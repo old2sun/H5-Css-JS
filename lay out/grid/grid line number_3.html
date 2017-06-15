@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>命名网格线和使用</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+		
+		/*在方括号内添加多个名称命名网格线, 使用多个名称命名网格线时要用空格隔开*/
+		/*将名称按顺序分配给网格线*/
+		grid-template-rows: [r_line1 a_1] 1fr [r_line2 a_2] 1fr [r_line3] ;
+		grid-template-columns: [c_line1 b_1] 1fr [c_line2 b_2] 1fr [c_line3] 1fr [c_line4];
+		
+	}
+
+	.wrapper .item-1 {
+		/*引用网格线名字不需要方括号*/
+		grid-row-start: a_2;
+		grid-row-end: r_line3;
+		grid-column-start: b_2;
+		grid-column-end: c_line4;
+
+		background-color: skyblue;
+		
+	}
+
+	.wrapper .item-2 {
+
+		grid-row: r_line1 / r_line3;
+		grid-column: c_line1 / c_line2;
+
+		background-color: greenyellow;
+		
+	}
+
+	.wrapper p {
+		min-height: 200px;
+		margin: 1px;
+		padding: 3px;
+		text-align: center;
+		color: #fff;
+		background-color: orangered;
+	}
+
+	</style>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<p class="item-1">1</p>
+		<p class="item-2">2</p>
+		<p>3</p>
+		<p>4</p>
+		<p>5</p>
+		<p>6</p>
+	</div>
+</body>
+</html>
