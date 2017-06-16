@@ -130,4 +130,8 @@ body {
     padding: 10px;
     color: #fff; }
 
+@media screen and (max-width: 768px) {
+  .star-news .head {
+    flex-flow: column wrap; } }
+
 /*# sourceMappingURL=test.css.map */

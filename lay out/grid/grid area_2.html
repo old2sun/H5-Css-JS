@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>隐式命名网格线名称</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+		
+		grid-template-rows: 80px 1fr 40px;
+		grid-template-columns: 1fr 200px;
+
+		/*命名网格区域*/
+		/*指定网格区域会给网格区域边线添加隐式的网格线名称。这些网格线的命名是基于网格区域命名, 只要在网格区域名称后面添加后缀 -start或 -end*/
+		grid-template-areas: 'header header' 
+		'content sidebar' 'footer footer';
+
+	}
+
+	.wrapper .header {
+		
+		grid-row-start: header-start;
+		grid-row-end: content-start;
+		grid-column-start: footer-start;
+		grid-column-end: sidebar-end;
+
+		background-color: skyblue;
+		
+	}
+
+	.wrapper .content {
+
+		background-color: greenyellow;
+		
+	}
+
+	.wrapper .sidebar {
+
+		background-color: coral;
+		
+	}
+
+	.wrapper .footer {
+
+		grid-column-start: footer-start;
+		grid-column-end: sidebar-end;
+
+		background-color: crimson;
+		
+	}
+
+	.wrapper p {
+		margin: 1px;
+		padding: 3px;
+		text-align: center;
+		color: #fff;
+		background-color: orangered;
+	}
+
+	</style>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<p class="header">header</p>
+		<p class="content">content</p>
+		<p class="sidebar">sidebar</p>
+		<p class="footer">footer</p>
+	</div>
+</body>
+</html>

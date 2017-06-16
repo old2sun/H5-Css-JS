@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通过网格区域命名和定位网格项目</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+		
+		grid-template-rows: 150px 1fr 100px;
+		grid-template-columns: 1fr 200px;
+
+		/*命名网格区域*/
+		grid-template-areas: 'header header' 
+		'content sidebar' 'footer footer';
+
+	}
+
+	.wrapper .header {
+		
+		grid-row-start: header;
+		grid-row-end: header;
+		grid-column-start: header;
+		grid-column-end: header;
+
+		background-color: skyblue;
+		
+	}
+
+	.wrapper .content {
+
+
+		background-color: greenyellow;
+		
+	}
+
+	.wrapper .sidebar {
+		/*简写*/
+		grid-area: sidebar;
+
+		background-color: coral;
+		
+	}
+
+	.wrapper .footer {
+
+		/*简写*/
+		grid-row: footer;
+		grid-column: footer;
+
+		background-color: crimson;
+		
+	}
+
+	.wrapper p {
+		margin: 1px;
+		padding: 3px;
+		text-align: center;
+		color: #fff;
+		background-color: orangered;
+	}
+
+	</style>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<p class="header">header</p>
+		<p class="content">content</p>
+		<p class="sidebar">sidebar</p>
+		<p class="footer">footer</p>
+	</div>
+</body>
+</html>

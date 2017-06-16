@@ -69,6 +69,7 @@ class MyMatcher {
 	String.prototype.replace(searchValue);
 	等同于：
 	searchValue[Symbol.match](this, replaceValue)
+	懵逼...
 */
 const x = {};
 x[Symbol.replace] = (...s) => console.log(s);

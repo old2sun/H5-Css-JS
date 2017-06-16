@@ -149,3 +149,12 @@ $contain-images: ($intro, back-1), ($cont, back-2), ($image, back-3);
 
 	} 
 }
+
+@media screen and (max-width: 768px){
+
+	.star-news {
+		.head {
+			flex-flow: column wrap;
+		}
+	}
+}

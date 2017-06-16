@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>隐式地命名网格区域名称</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+
+		/*如果网格线名称添加 -start 和 -end  后缀, 会隐式创建一个网络区域, 可以用来设置网络项目的位置*/
+		grid-template-rows: [outer-start] 1fr [inner-start] 1fr [inner-end] 1fr [outer-end];
+		grid-template-columns: [outer-start] 1fr [inner-start] 1fr [inner-end] 1fr [outer-end];
+	}
+
+	.wrapper .item-1 {
+		
+		/*demo中 行和列都具有 inner-start 和 inner-end 网格线名称, 同时也对应的创建一个隐式网格区域名称 inner*/
+		grid-area: inner;
+
+		background-color: skyblue;
+		
+	}
+
+	.wrapper p {
+		height: 50px;
+		margin: 1px;
+		padding: 3px;
+		text-align: center;
+		color: #fff;
+		background-color: orangered;
+	}
+
+	</style>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<p class="item-1"></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+</body>
+</html>
