@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>网格项目层级</title>
+	<title>网格项目层级p1</title>
 	<style type="text/css">
 	* {
 		margin: 0;
@@ -27,6 +27,8 @@
 	.wrapper .item-1 {
 
 		grid-column-start: 1;
+
+		/*由于项目中的位置重叠, 默认情况下是下一级覆盖上一级的结构, 设置了层级之后, 令 item-1 在 item-2 之上*/
 		z-index: 1;
 	
 		background-color: skyblue;

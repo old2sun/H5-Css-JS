@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网格项目对齐方式</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+
+		grid-template-rows: 80px 80px;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas: "content content" "content content";
+	}
+
+	.item-1 {
+		
+		/*align-self 和 justify-self 属于网格项目自身对齐方式。它们的属性值和 align-item 和 justify-items 一样*/
+
+		justify-self: start;
+		align-self: start;
+	}
+	.item-2 {
+		
+		justify-self: center;
+		align-self: center;
+	}
+	.item-3 {
+		
+		justify-self: end;
+		align-self: end;
+	}
+	.wrapper p {
+		
+		grid-area: content;
+
+		padding: 10px;
+		text-align: center;
+		color: #fff;
+		background-color: coral;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<p class="item-1">1</p>
+		<p class="item-2">2</p>
+		<p class="item-3">3</p>
+	</div>
+</body>
+</html>

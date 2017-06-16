@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网格项目对齐方式</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+	}
+
+	.wrapper {
+		display: grid;
+		
+		
+		/*alingen-content 网格轨道沿着横轴对齐方式;
+			justify-content 指定网络轨道沿着列轴对齐方式;
+			它们的属性与网格项目对齐方式一样
+		*/
+		grid-template-rows: 80px 80px;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas: "content content" "content content";
+
+	}
+
+	.item-1 {
+		grid-area: content;
+
+	}
+	.wrapper p {
+		padding: 10px;
+		text-align: center;
+		color: #fff;
+		background-color: coral;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<p class="item-1">1</p>
+	</div>
+</body>
+</html>

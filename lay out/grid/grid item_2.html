@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>隐式命名网格线名称</title>
+	<title>网格项目层级p2 demo</title>
 	<style type="text/css">
 	* {
 		margin: 0;
@@ -14,8 +14,6 @@
 		grid-template-rows: 80px 1fr 40px;
 		grid-template-columns: 1fr 200px;
 
-		/*命名网格区域*/
-		/*指定网格区域会给网格区域边线添加隐式的网格线名称。这些网格线的命名是基于网格区域命名, 只要在网格区域名称后面添加后缀 -start或 -end*/
 		grid-template-areas: 'header header' 
 		'content sidebar' 'footer footer';
 
@@ -53,6 +51,17 @@
 		
 	}
 
+	.wrapper .overtag {
+
+		grid-row-start: header-start;
+		grid-row-end: content-end;
+		grid-column-start: content-start;
+		grid-column-end: sidebar-start;
+		z-index: 1;
+
+		background-color: rgba(0,0,0,.5);
+	}
+
 	.wrapper p {
 		margin: 1px;
 		padding: 3px;
@@ -66,6 +75,7 @@
 </head>
 <body>
 	<div class="wrapper">
+		<p class="overtag">overtag</p>
 		<p class="header">header</p>
 		<p class="content">content</p>
 		<p class="sidebar">sidebar</p>
