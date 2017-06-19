@@ -12,14 +12,23 @@
 		display: grid;
 		
 		
-		/*alingen-content 网格轨道沿着横轴对齐方式;
-			justify-content 指定网络轨道沿着列轴对齐方式;
-			它们的属性与网格项目对齐方式一样
+		/* 
+			align-items 网格项目沿着横轴对齐方式;
+			justify-items 指定网格项目沿着列轴对齐方式;
+			
+			它的值有 auto、normal、start、end、center stretch（默认值, 占满整行）、baseline、first baseline 和 last baseline . 
 		*/
 		grid-template-rows: 80px 80px;
 		grid-template-columns: 1fr 1fr;
 		grid-template-areas: "content content" "content content";
 
+
+		justify-items: start;
+		justify-items: center;
+		justify-items: end;
+		justify-items: stretch;
+
+		align-items: center;
 	}
 
 	.item-1 {
