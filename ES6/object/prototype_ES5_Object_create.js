@@ -1,5 +1,5 @@
 // Object.create(proto [, propertiesObject])  第一个参数是对象原型, 第二个是对象属性
-
+//  它是ES5 的一个方法
 
 // 单继承
 function Shape() {

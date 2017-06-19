@@ -26,8 +26,9 @@
 
 			它的值有 noraml、start、end、center、stretch、space-around、space-between、space-around、space-evenly、baseline、first baseline、last baseline、
 
-			解释： space-around, 每行（列）, 相邻两个容器的间距等同于首个或最后一个容器靠近边缘的间距;
-			space-between, 头尾两个容器与边缘没有间距, 相邻容器平均分空间
+			解释： space-around 每行（列）平均分空间, 相邻两个容器的间距等同于首个或最后一个容器靠近边缘间距的2倍;
+			space-between 相邻容器平均分空间 头尾两个容器与边缘没有间距, 
+			space-evenly 平均分容器剩余空间, 相邻两个容器的间距等同于首个或最后一个容器靠近边缘的间距
 		*/
 
 		justify-content: start;
@@ -36,6 +37,13 @@
 		justify-content: space-around; 
 		justify-content: space-between; 
 		justify-content: space-evenly; 
+
+		align-content: start;
+		align-content: end;
+		align-content: center;
+		align-content: space-around; 
+		align-content: space-between; 
+		align-content: space-evenly; 
 	}
 
 
