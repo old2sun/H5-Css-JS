@@ -22,13 +22,13 @@ objBase.showName();
 objBase.sayHello();
 console.log(objBase);
 
+// sub 继承的是 Base 的原型,  构造函数的 base 属性和方法并没有继承
+
 var objSub = new Sub();
 objSub.showName();
 // objSub.sayHello(); // 没有继承sayHello, 报错
 console.log(objSub);
 
-
-// sub 继承的是 Base 的原型
 
 
 
