@@ -6,7 +6,7 @@ const s = new Set();
 [2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
 
 for (let i of s) {
-  // console.log(i); // 2,3,5,5 
+  // console.log(i); // 2,3,5,5
 }
 
 const set = new Set([1,2,1,1,5]);
@@ -27,13 +27,13 @@ let ss = new Set([0,2,3])
 
 ss.add(1).add(2).add(2); // 2被添加两次, 但只有一个2
 
-ss.size // 3  
+ss.size // 3
 
 ss.has(1) // true
 ss.has(2) // true
 ss.has(3) // false
 
-ss.delete(2) 
+ss.delete(2)
 ss.has(2) // false
 
 ss.clear()
@@ -61,7 +61,7 @@ dedupe([1,1,2,2,3]) // [ 1, 2, 3 ]
 let set_object = new Set(['red', 'green', 'blue']);
 
 for (let item of set_object.keys()) {
-	
+
 	// console.log(item);
 
 	// red
@@ -70,7 +70,7 @@ for (let item of set_object.keys()) {
 }
 
 for (let item of set_object.values()) {
-	
+
 	// console.log(item);
 
 	// red
@@ -79,7 +79,7 @@ for (let item of set_object.values()) {
 }
 
 for (let item of set_object.entries()) {
-	
+
 	// console.log(item);
 
 	// [ 'red', 'red' ]
@@ -91,22 +91,11 @@ for (let item of set_object.entries()) {
 // Set 结构的实例默认可遍历, 它的默认遍历器生成函数就是它的 values 方法
 Set.prototype[Symbol.iterator] === Set.prototype.values; // true
 
+// 这意味着, 可以省略 values 方法, 直接用 for...of 循环遍历 Set
+for(let x of set_object) {
 
-console.log()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	// console.log(x)
+	// [ 'red', 'red' ]
+	// [ 'green', 'green' ]
+	// [ 'blue', 'blue' ]
+}
