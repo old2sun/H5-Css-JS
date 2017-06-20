@@ -2,7 +2,7 @@ var http = require('http');
 var url = require('url');
 
 // 找出浏览器的路径
-function start() {
+function start(route) {
 	function onRequest(request, response) {
 
 		var pathname = url.parse(request.url).pathname;
