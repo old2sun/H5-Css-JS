@@ -6,3 +6,4 @@ var buf = new Buffer(10);
 var buf_2 = new Buffer([10,20,30,40]);
 // 通过字符串创建(utf-8是默认编码，可以用其它编码)
 var buf_3 = new Buffer('www.baidu.com','utf-8');
+
