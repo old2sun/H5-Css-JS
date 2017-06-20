@@ -78,6 +78,18 @@ x[Symbol.replace] = (...s) => console.log(s);
 
 
 
+/*
+	Symbol.iterator , 指向该对象的默认遍历器方法
+	
+*/
+var myIterable = {};
+myIterable[Symbol.iterator] = function* () {
+
+	yield 1;
+	yield 2;
+	yield 3;
+};
+[...myIterable]	// [1, 2, 3]
 
 
 
