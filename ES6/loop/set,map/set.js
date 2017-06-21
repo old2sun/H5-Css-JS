@@ -99,3 +99,57 @@ for(let x of set_object) {
 	// [ 'green', 'green' ]
 	// [ 'blue', 'blue' ]
 }
+
+
+// forEach(value, key, arr), Set实例的 forEach 方法, 遍历而每个成员, 没有返回值
+let set_objs = new Set([1, 2, 3]);
+set_objs.forEach((values, key) => {
+
+	// console.log(values * 2);
+
+	// 2
+	// 4
+	// 6
+} );
+
+
+
+
+
+
+// 应用demo
+
+// 拓展运算符内部使用 for...of 循环, 所以也可以用在 Set 结构
+let set1 = new Set(['aqua', 'coral', 'aliceblue']);
+let arr1 = [...set1]; // [ 'aqua', 'coral', 'aliceblue' ]
+
+// 拓展运算符和 Set 结构相结合, 实现数组去重
+let arr2 = [1, 1, 1, 20, 20, 40, 'orangered', 'orangered'] 
+let unique = [...new Set(arr2)]; // [ 1, 20, 40, 'orangered' ]
+
+
+// map 和 filter 方法用于 Set
+let arr_set1 = new Set([4, 5, 6]);
+arr_set1 = new Set([...arr_set1].map( (x) => x * 2 ) ); // 返回结构  Set { 8, 10, 12 }
+
+let arr_set2 = new Set([4, 5, 6, 8, 9]);
+arr_set2 = new Set([...arr_set2].filter( (x) => (x % 2) == 0 ) ); // Set { 4, 6, 8 }
+
+
+// 并集、交集、差集
+let a = new Set([1,2,3]);
+let b = new Set([4,3,2]);
+
+let union = new Set([...a, ...b]); // Set { 1, 2, 3, 4 }
+let intersect = new Set([...a].filter( x => b.has(x) )); // Set { 2, 3 }
+let difference = new Set([...a].filter( x => !b.has(x) )); // Set { 1 }
+
+
+// 直接在遍历操作中改变原来的 Set 结构, 两个方法的demo
+let set_arr1 = new Set([2, 1, 0]);
+set_arr1 = new Set([...set_arr1].map( (val) => val *2 )); // Set { 4, 2, 0 }
+
+let set_arr2 = new Set([0, 1, 2]);
+set_arr2 = new Set(Array.from(set_arr2, (val) => val * 2 )); // Set { 0, 2, 4 }
+
+
