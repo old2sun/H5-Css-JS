@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	const $arrow = $('.js-down');
-	/* 
+	/*
 	*	完美兼容获取滚动条顶部距离火狐+谷歌,只能取值兼容
-	*   $(document).scrollTop(); 
+	*   $(document).scrollTop();
 	*/
 	let distanceH
 	$('html,body').scrollTop(0);
@@ -26,7 +26,7 @@ $(document).ready(function(){
 		});
 	});
 
-	
+
 	function scrollFunc(e) {
 		if(!LOCK) return false;
 		e = e || window.event;
@@ -38,17 +38,15 @@ $(document).ready(function(){
 			// IE/Opera/Chrome
 			rollNum =  e.wheelDelta;
 			if(rollNum > 0){
-				// 判断到达底部
-				if(distanceH*num===distanceH*2) {LOCK=true;return;}
+				if(distanceH*num===0) {LOCK=true;return;}
 
 				num--;
 				$('html, body').animate({scrollTop:distanceH*num},600,function(){
 					LOCK = true;
 				});
 			} else if(rollNum < 0) {
-				// 判断到达顶部
-				if(distanceH*num===0) {LOCK=true;return;}
-				
+				if(distanceH*num===distanceH*2) {LOCK=true;return;}
+
 				num++;
 				$('html, body').animate({scrollTop:distanceH*num},600,function(){
 					LOCK = true;
