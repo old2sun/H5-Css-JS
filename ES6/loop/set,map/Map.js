@@ -150,4 +150,11 @@ m12.clear();
 m12.size; // 0
 
 
-console.log(m12.size)
+
+/*
+    Map 结构提供三个遍历器生成函数和一个遍历方法。
+    keys() 返回键名的遍历器
+    values() 返回键值的遍历器
+    entries() 返回所有成员的遍历器
+    forEach() 遍历 Map 的所有成员
+*/
