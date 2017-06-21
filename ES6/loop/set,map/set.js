@@ -22,7 +22,8 @@ let items_output = items.size; // 成员总数3
 // 方法有两大类, 操作数据和遍历操作
 
 
-// add() 添加值, 返回Set结构本身; has() 返回布尔值, 检查该值是否 Set 的成员; delete() 返回布尔值, 表示删除成员是否成功; clear() 清空所有成员, 无返回值
+// add() 添加值, 返回Set结构本身; has() 返回布尔值, 检查该值是否 Set 的成员;
+// delete() 返回布尔值, 表示删除成员是否成功; clear() 清空所有成员, 无返回值
 let ss = new Set([0,2,3])
 
 ss.add(1).add(2).add(2); // 2被添加两次, 但只有一个2
@@ -124,7 +125,7 @@ let set1 = new Set(['aqua', 'coral', 'aliceblue']);
 let arr1 = [...set1]; // [ 'aqua', 'coral', 'aliceblue' ]
 
 // 拓展运算符和 Set 结构相结合, 实现数组去重
-let arr2 = [1, 1, 1, 20, 20, 40, 'orangered', 'orangered'] 
+let arr2 = [1, 1, 1, 20, 20, 40, 'orangered', 'orangered']
 let unique = [...new Set(arr2)]; // [ 1, 20, 40, 'orangered' ]
 
 
@@ -151,5 +152,3 @@ set_arr1 = new Set([...set_arr1].map( (val) => val *2 )); // Set { 4, 2, 0 }
 
 let set_arr2 = new Set([0, 1, 2]);
 set_arr2 = new Set(Array.from(set_arr2, (val) => val * 2 )); // Set { 0, 2, 4 }
-
-

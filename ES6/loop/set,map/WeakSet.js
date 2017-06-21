@@ -27,6 +27,23 @@ const b = [5, 6];
 
 /*
   它有3个方法：
-  
+  WeakSet.prototype.add(value)  向 WeakSet 实例添加一个成员
+  WeakSet.prototype.delete(value)  清楚 WeakSet 实例的指定成员
+  WeakSet.prototype.has(value)  返回布尔值, 检测某个值是否存在 WeakSet 实例中
 
+  这些方法貌似没实现?
 */
+
+// demo
+const wss = new WeakSet();
+const obj = {};
+const foo = {};
+
+wss.add(window);
+wss.add(obj);
+
+wss.has(window);
+wss.has(foo);
+
+wss.delete(window);
+wss.has(window);
