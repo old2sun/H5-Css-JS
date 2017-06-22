@@ -24,12 +24,13 @@ http.createServer(function (req, res) {
 
     req.on('data', function(chunk) {
 
-        // 暂存请求体信息
+        // 暂存请求体信息, 格式为 Buffer 数据
         body += chunk;
     });
 
     req.on('end', function() {
-        // 解析参数
+
+        // 解析参数, 变为 Object 的格式 { name: '0', url: '1' }
         body = querystring.parse(body);
         // 设置响应头及编码
         res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
@@ -38,6 +39,7 @@ http.createServer(function (req, res) {
 
             res.write(`网站名：${body.name}
                 网站URL：${body.url}`);
+
         } else {
 
             res.write(postHTML);
@@ -46,4 +48,4 @@ http.createServer(function (req, res) {
     });
 }).listen(3000);
 
-// 访问  http://localhost:3000 
+// 访问  http://localhost:3000
