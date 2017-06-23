@@ -157,4 +157,168 @@ m12.size; // 0
     values() 返回键值的遍历器
     entries() 返回所有成员的遍历器
     forEach() 遍历 Map 的所有成员
+
+    PS: Map 与 Set 的遍历顺序一样, 都是按照插入顺序
 */
+
+const m13 = new Map([
+    ['F','no'],
+    ['T','ues'],
+]);
+
+// keys()
+for( let key of m13.keys()) {
+
+    // console.log(key);
+    // F
+    // T
+}
+
+// valuse()
+for( let item of m13.values()) {
+
+    // console.log(item);
+    // no
+    // ues
+
+}
+
+// entries()
+for( let [key,value] of m13.entries()) {
+
+    // console.log(key, value);
+    // F no
+    // T ues
+}
+
+// entries 等同于直接 for...of 遍历
+for( let [key, value] of m13 ) {
+
+    // console.log(key, value);
+    // F no
+    // T ues
+}
+
+// 原因与 Set一样
+map[Symbol.iterator] === map.entries  // true
+
+
+// Map 结构转数组结构 , 用 拓展云所附即可
+const m14 = new Map([
+    [1, 'one'],
+    [2, 'two'],
+    [3, 'three']
+]);
+
+[...m14.keys()]; // [ 1, 2, 3 ]
+[...m14.values()]; // [ 'one', 'two', 'three' ]
+[...m14.entries()]; // [ [ 1, 'one' ], [ 2, 'two' ], [ 3, 'three' ] ]
+[...m14]; // [ [ 1, 'one' ], [ 2, 'two' ], [ 3, 'three' ] ]
+
+
+//  结合数组 map 和 filter 方法可以实现 Map 的遍历与过滤, 因为 Map 本身没有 map 和 filter  方法
+const map0 = new Map()
+                .set(1, 'a')
+                .set(2, 'b')
+                .set(3, 'c');
+
+const map1 = new Map(
+    [...map0].map( ([k, v]) => [k * 2, '_' + v] )
+    // [ [ 2, '_a' ], [ 4, '_b' ], [ 6, '_c' ] ]
+);
+
+const map2 = new Map(
+    [...map0].filter( ([k, v]) => k < 3 )
+    // [ [ 1, 'a' ], [ 2, 'b' ] ]
+);
+
+// Map 有 forEach 方法 , 同样可以遍历.  结果： a 1 Map { 1 => 'a', 2 => 'b', 3 => 'c' }
+map0.forEach( (value, key, map) => { console.log(value, key, map) } )
+
+// 它还有第二个参数, 用来绑定 this
+const reporter = {
+    report: function (key, value) {
+        console.log(key, value)
+    }
+};
+
+map.forEach(function(value, key, map) {
+    this.report(key, value);
+}, reporter);
+
+
+// 与其它数据结构相互转换
+
+// Map 转为数组
+const myMap = new Map()
+            .set(true, 7)
+            .set({foo: 3}, ['abc']);
+[...myMap]; // [ [ true, 7 ], [ { foo: 3 }, [ 'abc' ] ] ]
+
+// 数组转为 Map
+new Map([
+    [true, 7, 9],
+    [{foo: 3}, ['abc']]
+])
+// Map { true => 7, { foo: 3 } => [ 'abc' ] }
+
+// Map 转为对象
+function strMaptoObj(strMap) {
+    let obj = Object.create(null);
+    for (let [k,v] of strMap) {
+        obj[k] = v;
+    }
+    return obj;
+}
+
+const Map_obj = new Map()
+            .set('yes', true)
+            .set('no', false);
+strMaptoObj(Map_obj); // { yes: true, no: false }
+
+//  对象转 Map
+function objToStrMap(obj) {
+    let strMap = new Map();
+    for (let k of Object.keys(obj)) {
+        strMap.set(k, obj[k]);
+    }
+    return strMap
+}
+
+objToStrMap({ yes: true, no: false }); // Map { 'yes' => true, 'no' => false }
+
+
+// Map 转 JSON
+
+// 键名都是字符串时
+function strMaptoJson(strMap) {
+    return JSON.stringify(strMaptoObj(strMap));
+}
+
+let jsonMap = new Map().set('yes',true).set('no',false);
+strMaptoJson(jsonMap); // {"yes":true,"no":false}
+
+// 键名有非字符串时, 可以转为数组 JSON
+function maptoJson(map) {
+    return JSON.stringify([...map]);
+}
+maptoJson(jsonMap); // [["yes",true],["no",false]]
+
+
+// JSON 转为 Map
+
+// 键名都是字符串
+function jsonToStrMap(jsonStr) {
+    // 对象转 map 那个方法
+    return objToStrMap(JSON.parse(jsonStr));
+}
+
+jsonToStrMap('{"yes": true, "no": false}'); // Map { 'yes' => true, 'no' => false }
+
+// JSON 数组格式转换Map
+function jsonToMap (jsonStr) {
+    return new Map(JSON.parse(jsonStr));
+}
+
+jsonToMap('[[true, 7], [{"foo": 3}, ["abc"]]]');
+// Map { true => 7, { foo: 3 } => [ 'abc' ] }
