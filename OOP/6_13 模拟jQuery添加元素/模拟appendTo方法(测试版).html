@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>appendTo(山寨)</title>
+	<script src='js/Jerry_4.js'></script>
+	<script>
+
+
+		window.onload = function(){
+			$.fn.extend({
+				appendTo : function(param){
+					// this 指的是标签的实例
+					Jerry.each(this,function(){
+						// Jerry(param)为实例化的 元素实例
+						Jerry(param)[0].appendChild(this);
+					});
+					Jerry(param)[0].appendChild(this[0]);
+					Jerry(param)[1].appendChild(this[1]);
+					Jerry(param)[2].appendChild(this[2]);
+					// 返回init实例
+					return this;
+
+				}
+			}); 
+
+			$('<span>黄色</span><span>黑色</span><span>白色</span>').appendTo('div');
+		}
+
+
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

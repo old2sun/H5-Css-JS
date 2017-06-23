@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<script src='js/jquery-1.12.1.js'></script>
+	<script>
+		window.onload = function(){
+			$('<div>test1</div><div>test2</div>').appendTo('body');
+
+			var createElement = function(html){
+				var div = document.createElement('div');
+				div.innerHTML = html;
+				return div;
+			}
+			document.body.appendChild(createElement())
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型</title>
+</head>
+<body>
+	<script type = "text/javascript">
+		function Person(name,age) {
+			this.name = name;
+			this.age = age;
+			this.showName = function(){
+
+			};
+		}
+		var p1 = new Person('方大同',77);
+		var p2 = new Person('薛凯琪',55);
+		console.log(p1.showName==p2.showName);//false
+		/*
+			方法共享需要引出一个新的概念:   原型prototype
+
+			每个函数都有一个原型属性prototype
+
+			该原型属性也是一个对象，它默认是 Object 的实例{} 或者 new Object(),
+			并且该实例默认有2个属性：constructor 和 __proto__
+
+			原型对象上面的成员(属性或者方法)被原型所属的构造函数实例化出来的对象所共享
+		*/
+
+		// 模拟原型
+		// Foo.prototype = {
+		// 	name:
+		// 	age:
+		// 	showName:
+		// 	constructor:;
+		// 	__proto__:;
+		// };
+		// var f1 = new Foo();
+		// var f2 = new Foo();
+		// console.log(Person);
+		/*-------------------------------------------*/
+
+		/* 原型的作用：成员共享，即属性和方法共享	*/
+		function Person(name,age) {
+			this.name = name;
+			this.age = age;
+		}
+		// 可存放任意数据类型
+		Person.prototype.showName = function(){
+			console.log(this.name);
+		};
+		Person.prototype.list =[1,2,3,4];
+		var p3 = new Person('陈敏',25);
+		p3.list.push(5);
+		var p4 = new Person('陈静',34);
+
+		console.log(p3.showName === p4.showName);
+		console.log(p4.list);
+	</script>
+</body>
+</html>

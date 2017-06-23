@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>eq() get()</title>
+	<script src='js/Jerry_16.js'></script>
+	<script>
+		/*
+		jQuery 对象和元素 DOM对象本质区别:
+
+		元素DOM 对象是系统提供的对象(浏览器实例化的,不是类数组)
+		
+		jQuery 对象就是普通的自定义对象(通过init实例化，是类数组，里面的成员是DOM元素)
+		*/
+		window.onload = function(){
+			Jerry.fn.extend({
+				// eq : function(num){
+				// 	if(typeof num === 'number'){
+				// 		//  返回第几个实例化的单个元素
+				// 		return Jerry(this[num]);
+				// 	}
+				// },
+				// get : function(num){
+				// 	if(typeof num === 'number'){
+				// 		// 返回第对象中的 几个 (DOM)元素
+				// 		return this[num];
+				// 	}
+				// }
+			});
+			$('div').eq(2).html('静静');
+			$('div').get(1).innerHTML = 'tt ';
+		}
+	</script>
+</head>
+<body>
+	<div>测试1111</div>
+	<div>测试2222</div>
+	<div>测试3333</div>
+</body>
+</html>

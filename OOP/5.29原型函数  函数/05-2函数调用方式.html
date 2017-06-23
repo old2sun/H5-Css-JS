@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数调用</title>
+</head>
+<body>
+	<script type="text/javascript">
+	/* call apply调用 */
+	// 这里的info 为 window的属性
+	var info = '敏姐';  
+	function foo(){
+		var info = '静姐';
+		console.log(this.info);
+		console.log(this === window);
+	}
+	foo();
+	foo.call();
+	foo.apply();
+	// 1、调用函数
+	// 2、call和 apply可以改变函数中的 this 指向
+	// 3、借用别的对象方法
+	var obj = {
+		info : '慧琪'
+	} 
+	// this 指向了 obj
+	foo.call(obj);
+	foo.apply(obj);
+
+	function sum(a,b) {
+		console.log(this === window); //true
+		console.log(a+b);
+		console.log(this.info);
+	}
+	sum(1,2);
+	// 可以传入参数
+	// apply() 必须加入数组，每个值都为独立
+	sum.call(obj,1,2);
+	sum.apply(null,[5,500]);
+	console.log('*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*');
+
+	// 求数组中的最大值
+	var arr = [123,45,5,23124,12,1,3];
+	/* sort(a,b) 数组排序 , 
+	>0由小到大, <0由大到小 */
+	var arr1 = arr.sort(function(a,b){
+		return a - b;
+	});
+	console.log(arr);
+	var max = Math.max.apply(null,arr);
+	console.log(max);
+
+	// ES5当中提供一个方法bind->改变this 指向
+	var info2 ='三只手';
+	function foo3(){
+		console.log(this.info2);
+	}
+	foo3();
+	var obj2 = {
+		info2:'8只手'
+	}
+	var fn = foo3.bind(obj2);
+	console.log(fn);
+	fn();
+
+	setTimeout((function(){
+		console.log(this.info);
+	}).bind(obj),1000);
+	// 在IE678中 使用bind 只能自己实现方法(柯里化)
+
+	</script>
+</body>
+</html>

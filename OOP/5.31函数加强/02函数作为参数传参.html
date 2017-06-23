@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数作为参数传参</title>
+</head>
+<body>
+	<script>
+		function foo(date){
+			// 接收传入参数，即函数
+			date();
+		}
+		/* 匿名函数	*/
+		foo(function(){
+			console.log('匿名函数');
+		});
+		var fn = function(){
+			console.log('函数表达式')
+		}
+		// 传入匿名函数参数
+		foo(fn);
+		console.log('*--------------------------------------*');
+		/*-----------------------------------------*/
+		var plan = function(data){
+			console.log('通知:'+data.name1+':'+data.age1+';'+data.name2+':'+data.age2+';');
+		}
+		function wenyuan(fn){
+			var result ={
+				name1:'试过后退',
+				age1: 12,
+				name2: '试过去追',
+				age2: 44
+			};
+			fn(result);
+		}
+		wenyuan(plan);
+		console.log("*--------------------------------------*");
+		/*---------------------------------------------*/
+
+		/*---- 模拟 Ajax ----*/
+		
+		// callback 为回调函数，传参才执行，有需要再调用的函数，回调函数
+		var callback = function(data){
+			console.log("通知"+data);
+		}
+
+		function ajax(){
+			//1、创建XHR对象
+			var xhr = new XMLHttpRequest();
+			//2、发送前的准备工作
+			xhr.open('get','http://localhost/abc.php',true);
+			//3、执行发送动作
+			xhr.send(null);
+			//4、指定回调函数
+			xhr.onreadystatechange = function(){
+				//4表示已经完成请求和响应步骤，只是无法判断是否成功
+				if(xhr.readyState===4){
+					//200表示服务器正常返回数据
+					//404表示没有找到请求的文件
+					//500服务端错误
+					if(xhr.status===200){
+						var result = xhr.responseText;
+						/*模拟成功获取数据执行回调函数*/
+						data(result);
+					}
+				}
+			}
+		}
+		// Ajax类似文员，写了个计划(传入函数),但不一定执行
+		ajax(callback);
+	</script>
+</body>
+</html>

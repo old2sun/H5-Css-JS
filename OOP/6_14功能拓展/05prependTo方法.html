@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>prependTo</title>
+	<!-- <script src="js/jquery-1.12.1.js"></script> -->
+	<script src='js/Jerry_9.js'></script>
+	<script>
+		Jerry.fn.extend({
+			prependTo : function(param){
+				// this为jerry实例，源数据
+				var origins = this;
+				var targets = Jerry(param) // 同样是Jerry实例,但是实例的内容不一样,目标元素。
+				var nodes = [];
+				for(var i=0;i<targets.length;i++){
+					// 遍历目标元素,缓存其中一个元素
+					var tar = targets[i];
+					for(var j=0;j<origins.length;j++){
+						//遍历 源数据,把每一个元素 放到 其中一个目标元素中
+						var node = null; //用于缓存克隆的元素
+						if(targets.length - 1 === i){
+							// 只剩最后一个目标元素时，不再复制
+							node = origins[j];
+						}else {
+							node = origins[j].cloneNode(true);
+							nodes.push(node); // 把克隆的元素存在数组
+						}
+						// 往目标元素插入 源数据
+						// insertBefore(要插入元素，位置)
+						tar.insertBefore(node,tar.firstChild);
+					}
+				}
+				[].push.apply(this,nodes); // 实例化克隆的元素
+				return this // 返回实例克隆的实例,方便链式编程
+			}
+		});
+		window.onload = function(){
+			var ret = $("<p>侧田</p><p>轩仔</p>").prependTo('div');
+			console.dir(ret);
+		}
+	</script>
+</head>
+<body>
+	<div><p>tests</p></div>
+	<div><p>tests</p></div>
+	<div><p>tests</p></div>
+	<div id='div1'>tests</div>
+</body>
+</html>

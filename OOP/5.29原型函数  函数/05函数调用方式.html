@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数调用</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/* 函数调用 */
+		/*---------- 1、普通函数 -----------*/
+		function Foo(){
+			'use strict'
+			/* 在ES3中，普通函数中的this是window,但是
+			在ES5的严格模式下，普通函数中的this 为undefined */
+			// console.log(this===window);//true
+			console.log(this);
+			console.log(123);
+		}
+		Foo();
+		/*----------2、对象上的方法 -----------*/
+		var obj = {
+			info : 'kitty',
+			showInfo : function(){
+				// 这里的this指的是obj
+				/* 简单来说,方法中的this
+				取决于调用方法前面的对象，即 .之前的对象 */
+				console.log(this.info);
+				console.log(this===obj);//true
+			}
+		}
+		obj.showInfo();
+		/*---------- 3、构造函数的调用-----------*/
+		function Foo2(name){
+			/* 构造函数中的this和
+			原型中的this 指向相同的实例对象 */
+			this.name = name;
+		}
+		Foo2.prototype.showName = function(){
+			/* 原型方法中的this 
+			就是原型函数所属的构造函数所实例化的实例对象 */
+			console.log(this.name);
+		};
+		var f1 = new Foo2('静姐');
+		var f2 = new Foo2('敏姐');
+		f1.showName();
+		f2.showName();
+	</script>
+</body>
+</html>

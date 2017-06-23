@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>匿名函数</title>
+</head>
+<body>
+	<script>
+		/*
+			function foo(){
+			// 词法作用域(静态作用域):访问变量时候取决于函数的定义位置，而不是调用位置
+
+			var abc = 123; // 自由变量
+			return function(){
+				console.log(abc);
+			}
+		}
+		// 动态作用域(未知)
+		var abc = 789;
+		foo()();
+
+		*/
+
+
+		// 闭包的访问方式
+		// 闭包形成一个封闭的环境，然后对外开放一个小的接口
+
+		//1 、闭包用来访问函数内部的变量(数据)
+		// function Foo(rate){
+		// 	var money = 10000;
+		// 	return function(){
+		// 		return money * rate;
+		// 	}
+		// }
+		// var data = Foo(0.03)();
+		// console.log(data);
+
+		// 自执行函数()()
+		/*
+			var fn = (function(){
+			var num = 0;
+			// function foo(){
+			// 	console.log(num++);
+			// }
+			// return foo;
+			return function(){
+				console.log(num++);
+			}
+		})();
+		fn();
+		// console.log(num);
+		*/
+
+		var obj = (function(){
+			var num = 0;
+			function f1(){
+				return ++num;
+			}
+			function f2(){
+				return --num;
+			}
+			function f3(){
+				return num+2;
+			}
+			return {
+				f1 : f1,
+				f2 : f2,
+				f3 : f3
+			}
+		})();
+		var ret1 = obj.f1(); //1
+		console.log(ret1);
+		var ret2 = obj.f2(); //0
+		console.log(ret2);
+		var ret3 = obj.f3(); //2
+		console.log(ret3);
+
+		//2、缓存中间状态值
+		var arr = [];
+		for(var i=0;i<3;i++){
+			arr[i] = (function(k){
+				return function(){
+					console.log(k);
+				}
+			})(i);
+		}
+		arr[0]();
+		arr[1]();
+		arr[2]();
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域链</title>
+</head>
+<body>
+	<script>
+		/*
+		作用域链：作用域之间形成的链（嵌套的函数），访问变量的规则是从里到外，不能反过来
+		*/
+
+		/* 作用域链只能访问嵌套关系的上级的函数，无法访问同级，或下级的	*/
+		var a = 10;
+		function foo(){
+			var b = 20;
+
+			function fn1(){
+				var e = 40;
+				b = 21;
+				function fn2(){
+					var e = 12;
+					console.log(d);
+				}				
+			}
+			fn1();
+
+			function fn(){
+				var c = 30;
+				console.log(a+b+c);
+			}
+			fn();
+		}
+		foo();
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实例化老虎</title>
+</head>
+<body>
+	<script>
+		function Tiger(name,age,color) {
+			this.name = name;
+			this.age = age;
+			this.color = color;
+			this.fn = function() {
+				console.log(this.name+'是一只'+this.age+'岁'+this.color+'的喵');
+			}
+		}
+		var xiaohei = new Tiger('小白','1','黑色');
+		xiaohei.fn();
+		var xiaobai = new Tiger('小黑','10','白色'); 
+		xiaobai.fn();
+
+		var muban = new Object();
+		// var muban = new Object;
+		muban.name = '小黄';
+		muban.age = '20';
+		muban.color = '绿色';
+		muban.fn = function(){
+			console.log(muban.name+"是只小喵，"+muban.color+"的,"+muban.age+"岁");
+		}
+		muban.fn();
+	</script>
+</body>
+</html>

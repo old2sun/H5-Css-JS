@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>预解析</title>
+</head>
+<body>
+	<script>
+		/*
+			预解析
+
+			JavaScript 代码运行分两个阶段：
+			
+			1、预解析
+			   预解析的时候如果遇到同名的变量或者函数，以函数为准，函数优先级比变量高
+
+			   全局作用域:  所有全局变量和函数声明都提前（变量提前只是变量名提前，但是赋值没有提前）
+
+			   函数作用域:  所有的局部变量和内部的函数声明以及形参都会提前
+
+			2、执行：从上到下逐行执行
+			         赋值语句
+			         函数调用
+			         分支语句
+			         循环语句   
+		*/
+
+		/*-----------全局作用域预解析--------------*/
+			console.log(a);
+			console.log(a in window);
+			/* 
+			  变量名声明提前	
+			   var a; 
+			   console.log(a);
+			   a = 12345678
+			*/
+			var a = 12345678;
+
+			// 函数声明提前
+			foo();
+			function foo(){
+				console.log(99999999);
+			}
+			console.log('*------------------------------------------*')
+			/*-----------函数作用域预解析--------------*/
+
+			function FFoo(){
+				console.log(a);
+				var a = 'ABCDEFG';
+				console.log(a);
+			}
+			FFoo();
+
+			// JavaScript 中数据类型是可变的(弱类型语音)
+			function ffoo() {
+				// 函数名声明提前函数,优先级比变量高
+				console.log(GG); // 函数的内容
+				var GG = 0.987969;
+				function GG(){
+					console.log('Hi');
+				}
+				console.log(GG); // 0.987969
+			}
+			ffoo();
+
+			// 如果函数中有参数，那就以参数为准
+			function test(a){
+				console.log(a); // 888888888 
+				var a = '八八八';
+				console.log(a); // 八八八
+			}
+			test(88888888888);
+			console.log('*-------------------------------------*');
+			// 在函数中预解析，函数的优先级最高，然后是参数
+			function test2(ccc){
+				// console.log(ccc);
+				// var ccc = '00000000000';
+				return function abc(){
+					console.log(ccc);
+				}
+				// console.log(ccc);
+			}
+			test2('have fun')();
+
+
+	</script>
+</body>
+</html>

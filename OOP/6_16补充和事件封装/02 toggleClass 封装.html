@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery toggleClass</title>
+	<style>
+		div{width: 100px;height: 100px;background: lightgreen;}
+    	.active{border:5px solid red;}
+    	.active0{border:10px solid blue;}
+    	.active1{border:1px solid orange;}
+    	.active3{border:20px solid pink;}
+	</style>
+	<script src='js/Jerry_17.js'></script>
+	<script>
+		window.onload = function(){
+			Jerry.fn.extend({
+				toggleClass : function(){
+					var p = arguments;  // 不用形参，直接用实参数组 arguments
+					if(p.length === 1 ){
+						// 实参长度为1，有1个或2个类名
+						if(Jerry.isString(p[0])){ // 如果是字符串
+							var reg = /\b+\w+\b/g;
+							var arr = p[0].match(reg);
+							if(arr.length === 1){ // 1个类名处理
+								this.each(function(){
+									// 判断单个元素是否拥有 已经匹配好(arr) 的类名
+									if(Jerry(this).hasClass(arr[0])){
+										Jerry(this).removeClass(arr[0]);
+									}else{
+										Jerry(this).addClass(arr[0]);
+									}
+								});
+							}
+							else if(arr.length ===2 ){  // 2个类名处理
+								this.each(function(){
+									if(Jerry(this).hasClass(arr[0])){
+										Jerry(this).removeClass(arr[0]);
+										Jerry(this).addClass(arr[1]);
+									}else{
+										Jerry(this).addClass(arr[0]);
+										Jerry(this).removeClass(arr[1]);
+									}
+								});
+							}
+						}
+						else if(Jerry.isFunction(p[0])){ //判断是否函数
+							// this 为实例对象
+							this.each(function(index,element){
+								// 调用函数
+								p[0](index,element.className);
+							});
+						}
+					}
+					else if(p.length === 2){
+						// 实参长度2，有一个函数和一个状态控制(boolean)或有一个类名和一个状态控制(boolean)
+						if(Jerry.isString(p[0])){
+							// 参数是一个类，一个状态控制
+							if(typeof p[1] === 'boolean'){
+								if(p[1]){
+									this.each(function(){
+										// 
+										Jerry(this).addClass(p[0]);
+									});
+								}else{
+									this.each(function(){
+										Jerry(this).removeClass(p[0]);
+									});
+								}
+							}
+						}
+						else if(Jerry.isFunction(p[0])){
+							if(typeof p[1] === 'boolean'){
+								this.each(function(index,element){
+									p[0](index,element.className,p[1]);
+								});
+							}
+						}
+					}
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<div class="active" ></div>
+    <div class="active2" ></div>
+    <div class="active2" ></div>
+    <div class="active" ></div>
+    <input type="button" value="点击">
+</body>
+</html>

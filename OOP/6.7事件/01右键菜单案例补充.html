@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>右键哟</title>
+    <style type="text/css">
+    /**{margin: 0px;padding: 0px;}*/
+    #rkArea{width: 300px;height: 300px;background-color: lightgreen;margin: 0 auto;}
+    #rkList{width: 100px;background-color: lightblue;padding: 0px;display: none;position: absolute;margin: 0px;}
+    #rkList li{list-style: none;height: 30px;line-height: 30px;text-align: left;padding-left: 5px;cursor: pointer;}
+    </style>
+    <script type="text/javascript">
+    window.onload = function(){
+    
+    document.onclick = function(){
+        var ul = document.getElementById('rkList');
+        ul.style.display = 'none';
+        document.oncontextmenu = null;
+    }
+    var div = document.getElementById('rkArea');
+        div.onmouseup = function(event){
+            event = event || window.event;
+            // event.button = 2 右键
+            if(event.button != 2){
+                return;
+            }
+
+            document.oncontextmenu = function(){
+                return false; 
+            }
+
+            var ul = document.getElementById('rkList');
+            ul.style.left = event.clientX + 'px';
+            ul.style.top = event.clientY + 'px';
+            ul.style.display = 'block';
+            var lis = ul.getElementsByTagName('li');
+            for(var i=0;i<lis.length;i++){
+                lis[i].onclick = function(event){
+                    console.log(this.innerHTML);
+                    // 这里做业务需求
+                    // callback                    
+                    if(event){
+                        event.stopPropagation();
+                    }else{
+                        window.event.cancelBubble = true;
+                    }
+                }
+                lis[i].onmouseover = function(){
+                    this.style.backgroundColor ='crimson';
+                }
+                lis[i].onmouseout = function(){
+                    this.style.backgroundColor = 'lightblue';
+                }
+            }
+        }
+    }
+    /* 控制a标签的默认行为 */
+    var a = document.getElementById('a');
+    a.onclick = function(){
+        return false  // 阻止默认行为
+    }
+    </script>
+</head>
+<body>
+    <div id="rkArea"></div>
+    <ul id="rkList">
+        <li>添加</li>
+        <li>分享</li>
+        <li>删除</li>
+    </ul>
+    <a id='a' href="http://www.baidu.com">点击</a>
+</body>
+</html>

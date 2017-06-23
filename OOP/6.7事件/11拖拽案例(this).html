@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽案例(this)</title>
+	<style type="text/css">
+    *{margin: 0;padding: 0;}
+    #drag{width: 100px;height: 100px;background: crimson;position: absolute;}
+    </style>
+    <script>
+    	window.onload = function(){
+    		function Drag(id){
+    			this.div = document.getElementById(id);
+    			this.disX = 0;
+    			this.disY = 0;
+    		}
+    		Drag.prototype.init = function(){
+    			var _this = this;
+    			this.div.onmousedown = function(e){
+    				e = e || window.event;
+    				_this.disX = e.clientX - this.offsetLeft;
+    				_this.disY = e.clientY - this.offsetTop;
+    				var that = this;
+    				document.onmousemove = function(e){
+    					e = e||window.event;
+    					_this.div.style.left = e.clientX - _this.disX + 'px';
+    					_this.div.style.top = e.clientY - _this.disY + 'px';
+    				}
+    				document.onmouseup = function(){
+    					document.onmousemove = null;
+    					that.releaseCapture && that.releaseCapture(); // 释放，与setCapture成对出现
+    				}
+    				that.setCapture && that.setCapture(); //兼容IE 阻止默认事件
+    				return false; // 阻止默认事件
+    			}
+    		}
+    		var drag = new Drag('drag');
+    		drag.init();
+    	}
+    	
+    </script>
+</head>
+<body>
+	<div id="drag">拖拽</div>
+</body>
+</html>

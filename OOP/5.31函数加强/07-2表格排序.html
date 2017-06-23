@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格排序</title>
+	 <style type="text/css">
+    #bookList{
+        background: lightBlue;
+        position: absolute;
+        top: 130px;
+        left: 50%;
+        margin-left:-450px;
+        width:auto;
+    }
+    #bookList table{
+        border-right:1px solid red;
+        border-bottom: 1px solid red;
+    }
+    #bookList table tbody tr td{
+        border-top: solid 1px red;
+        border-left: solid 1px red;
+        width: 160px;
+        text-align: center;
+    }
+    #bookList table thead tr th{
+        border-top: solid 1px red;
+        border-left: solid 1px red;
+        width: 160px;
+        text-align: center;
+        cursor:pointer;
+    }
+    #bookList table thead tr th:hover{
+        background-color: crimson;
+    }
+    #bookList table tbody tr th{
+        cursor: pointer;
+    }
+    </style>
+    <script>
+    	window.onload = function() {
+    		// 通过函数获取标签对象
+    		function Grid(id){
+    			this.table = document.getElementById(id);
+    		}
+    		Grid.prototype.init = function(data){
+    			// 添加 tbody、thead、tr、th标签
+    			var thead = document.createElement('thead');
+    			var tr = document.createElement('tr');
+    			var ths = '<th id="name">名称</th><th id="size">尺寸</th id="category"><th>类型</th><th id="desc">描述</th><th id="flag">标签</th>';
+    			tr.innerHTML = ths;
+    			thead.appendChild(tr);
+    			this.table.appendChild(thead);
+    			var tb = document.createElement('tbody');
+    			this.table.appendChild(tb);
+    			this.initData(data);	//执行添加数据，并渲染标签的函数,this值的还是实例对象 grid
+    			this.addEvent(data);
+
+    		}
+    		Grid.prototype.initData = function(data){
+    			var tag='';
+    			for(var i=0;i<data.length;i++){
+    				var item = data[i];
+    				tag += '<tr><td>'+item.name+'</td><td>'+item.size+'</td><td>'+item.category+'</td><td>'+item.desc+'</td><td>'+item.flag+'</td><tr>';
+    				var tb = document.getElementsByTagName('tbody')[0];
+    				tb.innerHTML = tag;
+    				this.table.appendChild(tb);
+    			}
+    		};
+    		Grid.prototype.addEvent = function(data){
+    			var ths = this.table.getElementsByTagName('th');
+    			var that = this;
+    				for(var i=0;i<ths.length;i++){
+    					ths[i].onclick = function(){
+    						// 排序功能，这里this指向被绑定事件的thead标签
+    						that.reSort(data,this);
+    					}
+    				}
+    		};
+    		Grid.prototype.reSort = function(data,th){
+    			var tb = this.table.getElementsByTagName('tbody')[0];
+    			tb.innerHTML = '';
+    			// 重新排序数据
+                // 通过判断，点击换顺序
+    			var fn = null;
+                if(th.sortFlag){
+                    fn = this.sortRegular(th.id,1);
+                    th.sortFlag =null;
+                }else {
+                     fn = this.sortRegular(th.id,-1);
+                     th.sortFlag = 1
+                }
+                    // 排序，数组.sort(函数)，函数的格式 function(a,b){}
+                    data.sort(fn);
+                    this.initData(data);
+    		};
+            // 排序,flag是控制顺序/倒序
+    		Grid.prototype.sortRegular = function(sortName,flag) {
+    			return function(o1,o2){
+    				var v1 = o1[sortName];
+    				var v2 = o2[sortName];
+    				if(v1<v2){
+    					return -1*flag;
+    				}else if(v1>v2){
+    					return 1*flag;
+    				}else {
+    					return 0;
+    				}
+    			}
+    		}
+    		/*模拟数据*/
+    		var data = [{
+    			name:'罪与罚',
+    			size: 333,
+    			category: '文学',
+    			desc: '救赎',
+    			flag: 1
+    		},{
+    			name:'战争与和平',
+    			size: 786,
+    			category: '文学',
+    			desc: '毛知啵',
+    			flag: 7
+    		},{
+    			name:'命运',
+    			size: 158,
+    			category: '鸡汤',
+    			desc: '改变',
+    			flag: 18
+    		},{
+    			name:'浮生梦',
+    			size: 223,
+    			category: '小说',
+    			desc: '一场悲剧',
+    			flag: 4
+    		}]
+    		// 构建函数，实例化对象，第一步先执行函数，再想下一步
+    		var grid = new Grid('myTable');
+    		grid.init(data);
+    	}
+    </script>
+</head>
+<body>
+	<div id="bookList">
+        <table id="myTable" cellspacing="0" cellpadding="0">
+	      
+        </table>
+    </div>
+</body>
+</html>

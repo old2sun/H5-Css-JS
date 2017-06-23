@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>each</title>
+	<script>
+		// each 就是传入就是对象和函数，调用函数传值给函数
+		function each(arr,fn){
+			for(var i=0;i<arr.length;i++){
+				var flag = fn.call(arr[i],i,arr[i]);
+				if(flag === false){
+					break;
+				}
+			}
+		}
+		var arr = [132,67245,657,34,51];
+		each(arr,function(i,ele){
+			// console.log(this == ele);
+			// 让this == ele 改变this的指向 
+			/*
+			fn.call(第一个参数为this,后面对应的参数都为实参,后面的参数为实参,队应 i 和  ele)
+			*/
+			console.log(ele);
+			if(i===3){
+				return false;
+			}
+		});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性判断</title>
+</head>
+<body>
+	<script>
+		/*
+			属性判断是否属于某个对象：
+			1、in,可以判断实例对象上的属性，也可以判断原型对象上的属性
+			2、hasOwnPeoperty()只能判断实例对象上的属性
+
+		*/
+		var obj = new Object();
+		obj.info = 'tom';
+		Object.prototype.age = 12;
+
+		console.log(obj.hasOwnProperty('info')); // true
+		console.log(obj.hasOwnProperty('age')); //在原型，不在对象， false
+		console.log('info' in obj); // true
+		console.dir(obj);
+
+		// 判断一个属性是否存在原型
+		if(!obj.hasOwnProperty('age')&& 'age' in obj){
+			console.log('age 属性在原型')
+		}
+
+	</script>
+</body>
+</html>

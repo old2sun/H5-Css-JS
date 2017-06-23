@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>增强选择器</title>
+	<script src="js/Jerry_12.js"></script>
+	<script>
+		window.onload = function(){
+			Jerry.fn.extend({
+				// prepend : function(html){
+				// 	// this 指目标元素
+				// 	Jerry(html).prependTo(this);
+				// 	return this;  // this 指目标元素
+				// },
+				// remove : function(html){
+				// 	// this 为实例对象
+				// 	return this.each(function(){
+				// 		this.parentNode.removeChild(this);
+				// 		// this 为实例对象单个元素
+				// 	})
+				// }
+			});
+
+			var ret = $('div').prepend('<p>6666666</p><p>999999</p>');
+			$('span').remove();
+        	console.log(ret.length);
+		}
+		
+	</script>
+</head>
+<body>
+	 <div><span>测试1</span><span>测试2</span><span>测试3</span><span>测试4</span></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包补充</title>
+</head>
+<body>
+	<script>
+		/*
+		闭包：封闭的包裹
+		形成闭包的方式 ：函数嵌套
+
+
+		垃圾回收机制：如果数据不存在任何引用,那么就成了垃圾
+
+		*/
+
+		// 返回值，这里的函数作用域内无法保存num值，每次执行都会重新定义 num，除非变量定义在全局，或者闭包
+		// function foo(){
+		// 	var num = 0;
+		// 	return ++num;
+		// }
+		// var ret1 = foo();
+		// var ret2 = foo();
+		// console.log(ret1,ret2);
+
+
+		/*---
+		闭包应用场景之一：
+		获取内部的变量，并且可以修改(通过返回的那个函数修改)
+		-----*/
+		// function foo(){
+		// 	var num = 99;
+		// 	// 这里为函数作用域，内部函数能访问这里的变量，这里的变量会保存起来
+		// 	function innerFn(){
+		// 		++num;
+		// 		return num;
+		// 	}
+		// 	return innerFn;
+		// }
+		// 另一种写法
+		function foo(){
+			var num = 79;
+			return function(){
+				++num;
+				return num;
+			}
+		}
+		var fn = foo(); // foo() 是 function innerFn(){}
+		var ret1 = fn();
+		var ret2 = fn();
+		console.log(ret1,ret2);
+	</script>
+
+</body>
+</html>

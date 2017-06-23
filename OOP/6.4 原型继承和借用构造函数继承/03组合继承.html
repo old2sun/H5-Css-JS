@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组合继承</title>
+</head>
+<body>
+	<script>
+		/* 
+			组合继承: 原型继承和借用构造函数继承
+
+			属性都使用实例上的，方法试用原型上的
+
+			*/
+
+			function Hero(name){
+				this.name = name;
+				this.score = [8.9,3.3,4.6,10.0];
+			} 
+			Hero.prototype.showName = function(){
+				console.log(this.name);
+			}
+			function Player(age,name){
+				// 借用构造函数的继承,this这里指实例pl
+				// 函数名()   函数名.call()
+				/*
+				this.name = name;
+				this.score = [8.9,3.3,4.6,10.0];
+				*/
+				Hero.call(this,name);
+				this.age = age;
+			}
+			// 原型继承获得showName方法
+			Player.prototype = new Hero();
+			Player.prototype.showAge = function(){
+				console.log(this.age);
+			}
+			// 要用 player构造函数的实例打印出年龄和名字
+			// var pl = new Player(30);
+			var pl = new Player(23,'萌萌哒泰坦');
+			pl.showAge(); 
+			pl.showName();
+			console.log('*------------------------------------*') 
+			var pl2 = new Player(45,'懵懵哒卡比');
+			pl2.showAge(); 
+			console.log('单独打印名'+pl2.name);
+			console.dir(pl);
+			pl2.score.push(23.4);
+			console.dir(pl2);
+	</script>
+</body>
+</html>

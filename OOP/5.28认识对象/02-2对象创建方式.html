@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建对象练习</title>
+</head>
+<body>
+	<script type = 'text/javascript'>
+		/*
+			对象创建方式练习
+			person
+		*/
+
+		// 1. 字面量，这种做法在创建多个的实例，代码冗余度高
+		var p1 = {};
+		p1.name = '丰哥';
+		p1.age = 125;
+		p1.sayHello = function() {
+			console.log(this.name + ':Hello');
+		}
+
+		var p2 = {};
+		p2.name = '伦哥';
+		p2.age = 25;
+		p2.sayHello = function() {
+			console.log(this.name +'say......Hi');
+		}
+
+		// 2. 构造函数
+		function Person(name,age) {
+			this.name = name;
+			this.age = age;
+		}
+		var p3 = new Person('骑士',28);
+		var p4 = new Person('雷霆',55);
+
+		/* 系统提供的构造函数: Object、Array、Date、Math、RegExp(regular expresson)、Function */
+		
+		var obj = new Object();
+		var arr = new Array();
+		var date = new Date();
+		var reg = new RegExp();
+		var str = new String();
+		var num = new Number();
+		var flag = new Boolean();
+		var fn = new Function();
+		console.dir(obj);
+		/*
+		实例对象内部包含一系列的键值对，键是字符串、值可以是任意的数据类型
+		*/
+		var obj ={};
+		obj.list = {
+			ids: [{
+				name:'lisi',
+				age:12,
+				score:[0,0,0,0,0]
+			}]
+		};
+		obj.fn = function(){};
+		obj.num = 123;
+		obj.flag = true;
+		console.dir(obj);
+	</script>
+</body>
+</html>

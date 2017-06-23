@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>val()</title>
+	<!-- <script src="js/jquery-1.12.1.js"></script> -->
+	<script src='js/Jerry_8.js'></script>
+	<script>
+		Jerry.fn.extend({
+			val : function(val){
+				if(arguments.length === 0){
+					// 如果没有实参，返回第一个元素的文本
+					return this[0].value;
+				}else {
+					// return Jerry.each(this,function(){
+					// 	this.value = val;
+					// 	console.dir(this);
+					// });
+					return this.each(function(){
+						this.value = val;
+					});
+				}
+			}							
+		});
+		window.onload = function(){
+			// 设置表单标签值
+			$('input').val('adminCCCCCCJY');
+			var ret = $('input').val();
+			// 获取表单标签值
+			console.log(ret);
+		}
+	</script>
+</head>
+<body>
+	<form>
+        <label>用户名</label><input type="text" name="" id="username">
+        <label>密码</label><input type="text" name="" id="password">
+    </form>
+</body>
+</html>

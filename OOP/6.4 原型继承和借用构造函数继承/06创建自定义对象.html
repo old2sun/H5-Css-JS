@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Object.create</title>
+</head>
+<body>
+	<script>
+		/*
+			ES5提供了一个方法：Object.create();
+		*/
+
+		var obj = Object.create(null);
+		// 创建的对象里什么都没有，也没有__proto__
+		var obj2 = new Object();
+		console.dir(obj);
+		console.dir(obj2);
+		/*-------------------------------------------*/
+		console.log('*-----------------------------------*');
+		var o = Object.create(obj); // 也是空
+		console.dir(o);
+
+		function Foo(num){
+			this.num = num;
+		}
+		Foo.prototype.showNum = function(){
+			console.log(this.num);
+		}
+		var foo = new Foo(1000000000);
+
+		//	在对原型对象创建实例
+		var o2 = Object.create(foo);
+		o2.showNum();
+		console.dir(o2);
+	</script>
+</body>
+</html>

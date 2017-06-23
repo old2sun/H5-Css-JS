@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型链</title>
+</head>
+<body>
+	<script>
+		/*	
+			实例对象中的属性搜索规则：
+			1、在实例对象找
+			2、去原型对象找
+			3、原型对象的原型对象上找
+			4、原型对象的原型对象的原型对象上找
+		*/ 
+		function People(age){
+			// this.age = age;
+			// 去掉这个属性，找原型链 
+		}
+		People.prototype.showAge = function(){
+			console.log(this.age);
+		}
+		// People.prototype.age = 15; // 去掉这个属性，找原型链 
+		Object.prototype.age =22;
+		var p1 = new People();
+		// console.dir(p1);
+		// console.log(p1.age);
+		// console.dir(People.prototype);
+		// console.dir(Object.prototype);
+		// console.dir(Object);
+		console.dir(p1);
+		console.dir(People.prototype);
+		console.dir(Object.prototype);
+
+		// 对象构造属性指向原型，构造实例化对象，对象指向原型，与函数无异
+		var obj = {};
+		console.dir(obj);
+;	</script>
+</body>
+</html>

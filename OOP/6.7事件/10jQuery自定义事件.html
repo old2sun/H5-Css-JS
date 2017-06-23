@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义事件</title>
+	<style>
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: aqua;
+		}
+	</style>
+	<script src ='jq/jquery-1.11.1.min.js'></script>
+	<script>
+		window.onload = function(){
+			/*
+			jQuery自定义事件
+			*/
+
+			// trigger模拟触发事件
+			// $('div').eq(0).click(function(){
+			// 	$(this).css('backgroundColor','crimson');
+			// });
+			// // 点击input,触发 div 的事件
+			// $('input').eq(0).click(function(){
+			// 	$('div').eq(0).trigger('click');
+			// 	// $('div').eq(0).trigger('dbclick');
+			// });
+
+
+			/*----trigger触发 on('abc',function(){})行为----*/
+			// trigger 模拟事件，自定义事件
+			$('div').on('abc',function(){
+				console.log(123);
+			});
+			$('div').trigger('abc');
+
+			$('input').on('opj',function(){
+				$(this).css('backgroundColor','orange');
+			})
+			$('input').trigger('opj');
+		}
+	</script>
+</head>
+<body>
+	<div id='div'>点击</div>
+	<input type="button" value= '点击'>
+</body>
+</html>

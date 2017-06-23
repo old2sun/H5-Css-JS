@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装继承多态</title>
+	<script src="js/fengzhuang.js"></script>
+	<script>
+		/*
+			面向对象的特征：封装、继承、多态
+			
+		*/
+
+		// 1、封装性
+		var abc = 123;
+		console.log(abc);
+		console.log(obj.space.abc);
+		obj.fn();
+		console.log(obj.space.abc);
+		obj.space.showInfo();
+		obj.space.sub.showMessage();
+		//==========================================
+		// 2、继承(代码的复用)
+
+
+		// 3、多态(同一种行为的多种状态)
+
+		/*模拟多态*/
+
+		var yanyuan = {
+			action : function(){
+				console.log('开始食面');
+			}
+		}
+		var dengguang = {
+			action: function(){
+				console.log('开灯');
+			}
+		}
+		var sheyingshi = {
+			action: function(){
+				console.log('希哥快黎');
+			}
+		}
+		var daoju = {
+			action: function(){
+				console.log('准备好味精。。。');
+			}
+		}
+
+		/* 
+		  这个不属于这里的行为,语法没有错误。
+		  JavaScript没有类型限制	
+		*/
+		var qunzhong = {
+			action:function(){
+				console.log('围观..');
+			}
+		}
+
+		// 导演
+		var arr = [];
+		function anpai(person){
+			arr.push(person);
+		}
+		anpai(yanyuan);
+		anpai(dengguang);
+		anpai(sheyingshi);
+		anpai(daoju);
+
+		function startAction(arr){
+			for(var i=0;i<arr.length;i++){
+				arr[i].action();
+			}
+		}
+
+		// 开拍
+		startAction(arr);
+
+		// startAction(yanyuan)(dengguang)(sheyingshi);  //谜一样的连写
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

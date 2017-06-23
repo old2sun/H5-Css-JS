@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数作为返回值</title>
+</head>
+<body>
+	<script>
+	/*
+		.sort()排序
+		Array.prototype.sort = function(fn){
+		 	fn是一个函数才能排序，
+		 	这个函数必须返回3个值，<0 >0  =0	
+		}
+	*/
+	var arr = [123,75.65,876,526,626];
+	arr.sort(function(a,b){
+		/* 
+		可以直接用a,b，sort(函数)，
+		传入的参数可以直接获得数组的第一个，
+		第二个值  return a-b或 return b-a 
+		*/
+		// return a-b;
+		if(a>b){
+			return 1;
+		}else if(a<b){
+			return -1;
+		}else {
+			return 0;
+		}
+	});
+	console.log(arr);
+	/*-------------------------------------------------------------*/
+	// 排序，以age属性把数组里的json对象排序
+	var list = [{name:'静',age:24},{name:'敏',age:18},{name:'琪',age:43}];
+	// var foo = function(nature){
+	// 	var sn = nature;
+	// 	function regular(a,b){
+	// 		var v1 = a[sn];
+	// 		var v2 = b[sn];
+	// 		if(v1>v2){
+	// 			return 1;
+	// 		}else if(v1<v2){
+	// 			return -1;
+	// 		}else{
+	// 			return 0;
+	// 		}
+	// 	}
+	// 	return regular;
+	// }
+
+	// var foo = function(nature){
+	// 	var regular = function (abc,cde){
+	// 		var v1 = abc[nature];
+	// 		var v2 = cde[nature];
+	// 		if(v1>v2){
+	// 			return -1;
+	// 		}else if(v1<v2){
+	// 			return 1;
+	// 		}else{
+	// 			return 0;
+	// 		}
+	// 	}
+	// 	return regular;
+	// }
+
+	// var fn = foo('age');
+	// list.sort(fn);
+
+	var foo = function(sortName){
+		return function (o1,o2){
+			var v1 = o1[sortName];
+			var v2 = o2[sortName];
+			if(v1>v2){
+				return 1;
+			}else if(v1<v2){
+				return -1;
+			}else{
+				return 0;
+			}
+		}
+	}
+	var arrLi = list.sort(foo('age'));
+	console.log(list);
+
+	</script>
+</body>
+</html>

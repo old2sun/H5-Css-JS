@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实例化过程1</title>
+</head>
+<body>
+	<script>
+
+	/*
+	1、普通函数
+	2、构造函数 （通常要实例化，new一个对象才能扮演构造函数）
+	3、函数作为对象  （对象的本质为无序的键值对）
+	函数3种角色 
+
+	$ 扮演了普通函数和对象的角色
+	init 扮演了构造函数的角色
+
+	*/
+
+		/*----模拟 jQuery 原理----*/ 
+		var $ = jQuery = function(){
+			// 实例化对象 $.fn原型下的构造函数
+			return new $.fn.init();
+		}
+		// $.fn 赋值为原型
+		$.fn = $.prototype = {
+			init : function(){
+				this.hello = 'tom';
+				this.showHello = function(){
+					console.log(this.showHello);
+				}
+				this.css = function(){
+					console.log('css');
+				}
+				// this 指向 实例化对象 new $.fn.init()，如 new Foo()
+			},
+			jQuery : '1,0',
+			length :  666,
+			size : function(){
+				console.log(this.length);
+			},
+			html : function(){
+
+			}
+		}
+		// 改变原型链，让 new $.fn.init() 实例能访问 $的原型
+		$.fn.init.prototype = $.fn;
+
+		// $作为对象添加一个方法
+		$.hi = function(){
+
+		}
+		// 添加方法到原型上
+		$.fn.hello = function(){
+
+		}
+		console.dir($);
+
+
+		// 实例化对象，构造函数为 init，调用css方法
+		// jQuery的原理，调用原型里的方法 
+		$().css();
+		// 如  var = new Foo();，只是这里$()获得的是return的值
+		var ret = $();
+		ret.size();
+		console.log(ret.jQuery);
+
+
+
+		/*---解析上面的例子----*/
+		// 可以在原型上，实例化对象，让函数成为构造函数
+		function Foo(){
+
+		}
+		Foo.prototype = {
+			num : 999,
+			ccc : function(){
+				this.info =  33333;
+			}
+		}
+		// 无法获取外部的数据
+		var c = new Foo.prototype.ccc();
+		console.dir(c);
+		// 改变原型链，让里面的函数能访问另一个原型链的函数
+		Foo.prototype.ccc.prototype = Foo.prototype;
+		var c = new Foo.prototype.ccc();
+		console.log(c.num);
+	</script>
+</body>
+</html>

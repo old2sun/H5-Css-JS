@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基本代码</title>
+	<style type="text/css">
+    #tab div,#tab1 div{display: none;}
+    #tab img,#tab1 img{width: 300px;height: 200px;}
+    </style>
+    <script type="text/javascript" src="js/tab.js"></script>
+	<script type="text/javascript">
+	window.onload = function() {
+        // 自动轮播
+        // 计数器
+        // Tab.prototype.autoPlay = function() {
+        //     this.nowIndex = 0; 
+        //     var that = this;
+        //     setInterval(function(){
+        //         //在这里 this 是指 window
+        //         // console.log(this);
+        //         if(that.nowIndex === that.aInput.length-1){
+        //             that.nowIndex = 0;
+        //         }else {
+        //             that.nowIndex++;
+        //         }
+        //         // that.change(按钮的索引)
+        //         that.change(that.aInput[that.nowIndex]);
+        //     },1000);
+        // }
+
+		var tab1 = new Tab('tab');
+		tab1.init();
+		
+        // tab1.autoPlay();
+	}
+	</script>
+</head>
+<body>
+	<div id="tab">
+        <input type="button" value="苹果">
+        <input type="button" value="橘子">
+        <input type="button" value="香蕉">
+        <div><img src="img/apple.jpg"></div>
+        <div><img src="img/orange.jpg"></div>
+        <div><img src="img/banana.jpg"></div>
+    </div>
+    <div id="tab1">
+        <input type="button" value="苹果">
+        <input type="button" value="橘子">
+        <input type="button" value="香蕉">
+        <div><img src="img/apple.jpg"></div>
+        <div><img src="img/orange.jpg"></div>
+        <div><img src="img/banana.jpg"></div>
+    </div>
+</body>
+</html>

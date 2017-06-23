@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图重复又重复</title>
+    <style type="text/css">
+    *{margin:0;padding:0;}
+    #div{height: 400px;overflow: hidden;position: relative;width: 1366px;left: 50%;margin-left: -683px;}
+    #div ul{position: absolute;left: 0;}
+    #div ul li{list-style: none;float: left;}
+    #dot{width: 100%;position: absolute;text-align: center;bottom: 0;}
+    #dot a{display: inline-block;background: #333;width: 15px;height: 15px;}
+    #dot a:hover{background: white;}
+    #dot a.active{background: white;}
+    </style>
+    <script type="text/javascript" src="js/cycle_2.js">
+    	/* 引用cycle构造函数的文件，在这里可以调用	*/ 
+    </script>
+    <script type="text/javascript">
+    window.onload = function() {
+    	// 2、创建构造函数
+    	function Ancycle(id){
+    		// 3、借用构造函数继承,执行cycle函数，this指向cycle，传入id参数
+    		Cycle.call(this,id);
+    		this.nowIndex = 0;
+    	}
+
+    	// 4、给原型函数添加一个方法
+    	// 4-1 Ancycle 原型继承 Cycle的方法，可以调用 Cycle
+    	
+    	// Ancycle.prototype = new Cycle('div');
+
+    	// 6 如果不传参数，就要在那个js文件里判断，直到这个文件执行，有调用 Ancycle 传入id为止
+    	Ancycle.prototype = new Cycle();
+    	Ancycle.prototype.autoPlay = function(){
+    		var that = this;
+    		setInterval(function(){
+    			if(that.nowIndex === that.aA.length-1){
+    				that.nowIndex = 0;
+    			}else{
+    				that.nowIndex++;
+    			}
+    			// 传入的是 某个按钮对象数组
+    			that.change(that.aA[that.nowIndex]);
+    		},1000);
+    	}
+
+    	// 1、实例化对象，初始化页面
+    	// var cycle = new Cycle('div');
+    	// cycle.init();
+    	// console.dir(cycle);
+
+    	// 5、实例化 Ancycle对象
+    	var cycle123 = new Ancycle('div');
+    	cycle123.autoPlay();
+    	cycle123.init();
+    	console.dir(cycle123);
+    }
+    </script>
+</head>
+<body>
+    <div id="div">
+        <ul>
+            <li><img src="img/1.png"></li>
+            <li><img src="img/2.png"></li>
+            <li><img src="img/3.png"></li>
+        </ul>
+        <div id="dot">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+</html>

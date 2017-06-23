@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基本代码</title>
+	<style type="text/css">
+    #tab div,#tab1 div{display: none;}
+    #tab img,#tab1 img{width: 300px;height: 200px;}
+    </style>
+    <script type="text/javascript" src="js/tab.js"></script>
+	<script type="text/javascript">
+	window.onload = function() {
+		// 主程序放进了js文件，然后只需调用
+		var tab1 = new Tab('tab');
+		tab1.init();
+
+		// 程序复用
+		var tab2 = new Tab('tab1');
+		tab2.init();
+	}
+	</script>
+</head>
+<body>
+	<div id="tab">
+        <input type="button" value="苹果">
+        <input type="button" value="橘子">
+        <input type="button" value="香蕉">
+        <div><img src="img/apple.jpg"></div>
+        <div><img src="img/orange.jpg"></div>
+        <div><img src="img/banana.jpg"></div>
+    </div>
+    <div id="tab1">
+        <input type="button" value="苹果">
+        <input type="button" value="橘子">
+        <input type="button" value="香蕉">
+        <div><img src="img/apple.jpg"></div>
+        <div><img src="img/orange.jpg"></div>
+        <div><img src="img/banana.jpg"></div>
+    </div>
+</body>
+</html>

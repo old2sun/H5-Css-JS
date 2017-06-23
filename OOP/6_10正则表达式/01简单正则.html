@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单认识正则</title>
+</head>
+<body>
+	<script>
+		/*
+		正则表达式： regular expression
+		RegExp
+		*/
+		function getNum(str){
+			var arr = [];
+			var temp = '';
+			for(var i=0;i<str.length;i++){
+				// charAt()获取字符
+				var c = str.charAt(i);
+				if(c>='0'&&c<='9'){
+					temp += c;
+				}else {
+					if(temp){
+						arr.push(temp);
+						temp = '';
+					}
+				}
+			}
+			return arr;
+		}
+		var str = 'qrpc1255jocvzb623sdau38aslfjh23599flkzvhyuuy';
+		var arr = getNum(str)//[1255,623,38,23599];
+		console.log(arr);
+	</script>
+</body>
+</html>

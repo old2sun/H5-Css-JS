@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用封装1.2</title>
+	<script src="js/Jerry_2.js"></script>
+	<script>
+
+		console.dir($);
+		// $对象添加方法或属性
+		$.extend({
+			fn1: function(){},
+			info : '信息'			
+		});
+		// 在原型对象上添加
+		$.fn.extend({
+			foo1: function(){},
+			msg : '鸽子'
+		});
+		console.log($().msg);
+		console.log($.msg);
+		
+		window.onload = function(){
+		var ret = $('div');
+		console.dir($);
+		console.log(ret);
+	}
+	</script>
+</head>
+<body>
+	<div id="div"></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

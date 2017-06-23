@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery名字不冲突</title>
+	<script src="js/jquery-1.12.1.js"></script>
+	<script src="js/test1.js"></script>
+	<script>
+		/* 
+		假设有其他人用了跟jQuery同样的函数名
+		可以用 noConflict(); 缓存其他名字，避免命名冲突	
+
+		noConflict()
+		*/
+		window.onload = function(){
+			// var ret = $('div'); // 命名冲突
+			var abc = jQuery.noConflict();
+			var ret = abc('div');
+			console.log(ret.length);
+			$.test();
+		}
+		/* 原理，就是把原来的东西缓存到另一个变量，把自己原来的名字让给别人  */
+		// var $ = {info:123};
+		// var _$ = $;
+		// function recover(){
+		// 	return _$;
+		// }
+		// $ = {info:456};
+		// console.log($.info);
+		// var abc = noConflict();
+		// console.log(abc.info);
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

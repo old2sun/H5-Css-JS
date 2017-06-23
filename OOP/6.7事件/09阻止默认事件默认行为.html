@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>阻止默认行为</title>
+	<script>
+		/*
+		event对象的方法
+		preventDefault() ，阻止系统给标签的默认行为
+		*/
+		window.onload = function(){
+			var a  = document.getElementsByTagName('a')[0];
+			a.onclick = function(e){
+				e = e || window.event;
+				if(e){
+					e.preventDefault();
+				}else {
+					 e.returnValue = false;
+				}
+				/*
+				return fasle 阻止默认行为，不阻止冒泡
+				jQuery 的 return False 既会阻止默认行为，也阻止冒泡
+				*/
+			}
+		}
+	</script>
+</head>
+<body>
+	<a href="http://www.baidu.com">阻止跳转</a>
+</body>
+</html>

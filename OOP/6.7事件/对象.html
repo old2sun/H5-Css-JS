@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象取值</title>
+	<script>
+	/*
+	. 操作的是字符串，
+	[] 操作符操作的是变量，字符串
+	*/
+		var name = 'coco';
+		obj = {};
+		obj[name]=['敏敏'];   // [变量] 没值为会 ""
+		obj.age=[22];
+		console.dir(obj);
+		console.log(obj[name]);
+		console.log(obj.coco);
+		console.log(obj.age);
+		// console.log(obj.[age]); 
+		// 错误写法，age为字符串，不是变量
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

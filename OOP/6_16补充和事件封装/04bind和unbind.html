@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<!-- <script src='js/jquery-1.12.1.js'></script> -->
+	<script src="js/Jerry_17.js"></script>
+	<script>
+
+		window.onload = function(){
+			Jerry.fn.extend({
+				bind:function(type,fn,flag){
+					this.on(type,fn,flag);
+					return this;
+				},
+				unbind : function(type,fn,flag){
+					this.off(type,fn,flag);
+					return this;
+				}
+				// 点击一次后就解除绑定
+//				one : function(type,fn,flag){
+//					var that = this;
+//					var origin = fn;
+//					fn = function(){
+//						Jerry().off(type,fn);
+//						return origin.apply(this, arguments );
+//					}
+//					this.each(function(){
+//						that.on(type,fn,flag);
+//					});
+//				}
+			});
+
+		var fn = function(){
+			console.log(123);
+		}
+//        $('input').eq(0).bind('click mouseover mouseout ',fn);
+//        $('input').eq(0).unbind('mouseover mouseout',fn);
+		  $('input').one('click',fn);
+		}
+	</script>
+</head>
+<body>
+	<div></div>
+	<input type="button" value="点击1">
+	<input type="button" value='点击2'>
+</body>
+</html>

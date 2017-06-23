@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css</title>
+	<style> div{width: 300px;height: 300px;background-color: aqua;margin-top: 5px;}</style>
+	<script src='js/Jerry_13.js'></script>
+	<script>
+		window.onload = function(){
+			// // 模拟封装 css 方法 
+			// Jerry.fn.extend({
+			// 	// 通过传入的实参，判断当前是要获得属性，还是设置属性值(是设置单个，还是设置多个)
+			// 	css : function(k,v){
+			// 		var arg = arguments;
+			// 		if(arg.length === 1){
+			// 			// css('width')
+			// 			// 如果长度为1，而且是字符串，就是获取值
+			// 			if(Jerry.isString(k)){
+			// 				// 判断获取样式的是否需要兼容模式,需要就currentStyle
+			// 				if(this[0].currentStyle){
+			// 					// 这里只编写获取第一个元素的值
+			// 					// return this[0].style[k]; //只能获取行内样式
+			// 				}else{
+			// 					// this指的是实例对象
+			// 					var ret = window.getComputedStyle(this[0],null); // 获取标准浏览器样式
+			// 					return ret[k];
+			// 				}
+			// 			}
+			// 			// 判断是否传入对象 {width:100,height:100}
+			// 			else if(Jerry.isObj(k)){
+			// 				// 这里的 this 是实例对象
+			// 				this.each(function(){
+			// 					for(var attr in k){
+			// 						// 这里 this 指遍历中的单个元素
+			// 						this.style[attr] = k[attr];
+			// 					}
+			// 				});
+			// 			}
+			// 		}
+			// 		else if(arg.length ===2 ){
+			// 			// 实参有两个，设置单个属性样式(只有一个属性也循环)
+			// 			this.each(function(){
+			// 				this.style[k] = v;
+			// 			});
+
+			// 		}
+			// 	}
+			// });
+
+			$('div').css('background','orange');
+			var ret = $('div').css('width');
+			console.log(ret);
+
+			$("div").css({
+				width: '100px',
+				height: '100px',
+				backgroundColor : 'green'
+			})
+		}
+	</script>
+</head>
+<body>
+	<div>测试</div>
+    <div>测试</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setTimeout</title>
+</head>
+<body>
+	<script>
+		console.log(123);
+		//循环了3个定时函数
+		for(var i = 0;i<3;i++){
+			setTimeout(function(){
+				console.log(++i);
+			},0);
+		}
+		console.log(789);
+		//结果顺序为 123,789,3
+
+		// 利用队列模拟"快速悬停"时不会立刻换改变样式
+		obj.onmouseover = function(){
+			this.timer = setTimeout(function(){
+				// 这里操作样式
+
+			},10); 
+		}
+		obj.onmouseout = function(){
+			clearTimeout(this.timer);
+		}
+	</script>
+</body>
+</html>

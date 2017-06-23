@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>attr()</title>
+	<!-- <script src="js/jquery-1.12.1.js"></script> -->
+	<script src='js/Jerry_8.js'></script>
+	<script>
+		Jerry.fn.extend({
+			attr : function(key,value){
+				// 判断获取属性值的分支
+				if(typeof key === 'string' && value ===undefined){
+					return this[0].getAttribute(key);//获取第一个元素的属性值
+				}else if(typeof key === 'string' && typeof value === 'string'){
+					// 这里的this为实例对象
+					// return Jerry.each(this,function(){
+					// 	// 设置每一个元素属性值
+					// 	this.setAttribute(key,value)
+					// });
+					// 另一种写法 
+					// 这个 this与上面的this 是同一个，是init的实例
+					return this.each(function(){
+						this.setAttribute(key,value);
+					});
+				}
+			}
+		});
+		window.onload = function(){
+			// 操作属性
+
+			// 由于 each 方法没有返回数值，需要修改，才能实行链式操作 
+			$('div').attr('flag','Chinese').html('中国旗子');
+			// 获取属性值
+			var ret = $('div').attr('flag');
+			console.log(ret);
+		}
+	</script>
+</head>
+<body>
+	<div>测试1</div>
+	<div>测试2</div>
+	<div>测试3</div>
+	<div id='div1'>要放进的div</div>
+</body>
+</html>

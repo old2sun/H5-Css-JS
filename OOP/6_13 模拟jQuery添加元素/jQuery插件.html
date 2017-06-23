@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: crimson;
+		}
+	</style>
+	<script src="js/jquery-1.12.1.js"></script>
+	<script>	
+		(function($){
+			$.abc = function(){
+				console.log(123);
+			}
+			var change = function(){
+				document.getElementById('btn1').onclick = function(){
+					document.getElementById('div1').style.backgroundColor = 'aqua';
+				}
+			}
+			$.ccc = function(){
+				change();
+			}
+			// $.fn.init = function(){
+			// 	change();
+			// }
+		})(jQuery);
+		$(function(){
+			$.abc();
+			// $.fn.init();
+			$.ccc();
+		});
+	</script>
+</head>
+<body>
+	<div id='div1'></div>
+	<button id='btn1'>变色</button>
+</body>
+</html>

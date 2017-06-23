@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<!-- <script src='js/jquery-1.12.1.js'></script> -->
+	<script src="js/Jerry_17.js"></script>
+	<script>
+		/*jQuery演示*/
+		// $(function(){
+		// 	$('input').on('click',function(){console.log(123);});
+		// 	var fn1 =function(){console.log(555);};
+		// 	// 可以传函数名
+		// 	$('input').on('click',fn1);
+		// 	// 解除事件
+		// 	$('input').off('click,function(){console.log(888);}');
+		// 	$('input').click(function(){console.log(999)});
+		// 	// 可以传对象绑定多个事件
+		// 	$('input').on({
+		// 		click : function(){
+
+		// 		},
+		// 		mouseover : function(){
+
+		// 		},
+		// 		mouseout : function(){
+
+		// 		}
+		// 	});
+		// });
+		window.onload = function(){
+			// Jerry.fn.extend({
+			// 	on : function(type,fn,flag){
+			// 		var arg = arguments;
+			// 		if(arg.length===1 && Jerry.isObj(arg[0])){
+			// 			// 判断传入的是否对象
+			// 			for(var key in arg[0]){
+			// 				// this 实例对象
+			// 				this.each(function(){
+			// 					if(this.addEventListener){
+			// 						// this 单个元素
+			// 						this.addEventListener(key,arg[0][key],false);
+			// 					}else{
+			// 						this.attachEvent('on'+key,arg[0][key]); // 兼容 IE
+			// 					}
+			// 				});
+			// 			}
+			// 		}
+			// 		else{ // 单个事件时分支
+			// 			var reg = /\b\w+\b/g;
+			// 			var arr = arg[0].match(reg);
+			// 			for(var i=0;i<arr.length;i++){
+			// 				flag = flag?flag:false;
+			// 				this.each(function(){
+			// 					if(this.addEventListener){
+			// 						this.addEventListener(arr[i],fn,flag);
+			// 					}else{
+			// 						this.attachEvent('on'+arr[i],fn);
+			// 					}
+			// 				});
+			// 			}
+			// 		}
+			// 		return this;
+			// 	},
+			// 	off : function(type,fn,flag){
+			// 		var arg = arguments;
+			// 		var reg = /\b\w+\b/g;
+			// 		var arr = arg[0].match(reg);
+			// 		for(var i=0;i<arr.length;i++){
+			// 			this.each(function(){
+			// 				if(this.removeEventListener){
+			// 					this.removeEventListener(arr[i],fn,flag);
+			// 				}else{
+			// 					this.detachEvent('on'+arr[i],fn);
+			// 				}
+			// 			});
+			// 		}
+			// 	}
+			// });
+
+		var fn = function(){
+        console.log(123);
+        };
+        var fn1 = function(){
+            console.log(456);
+        };
+
+        $('input').on('click mouseout mouseover',fn);
+        $('input').off('click mouseover',fn);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="点击1">
+	<input type="button" value='点击2'>
+	<div class="c">
+        <div class="b">
+            <div class="a"></div>
+        </div>
+    </div>
+</body>
+</html>

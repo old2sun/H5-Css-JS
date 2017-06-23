@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>投票</title>
+	<script>
+		window.onload = function(){
+			var btn = document.getElementsByTagName('input');
+			for(var i = 0;i<btn.length;i++){
+				btn[i].onclick = (function(){
+					var num = 0;
+					return function(){
+						alert(++num);
+					}
+				})();
+
+				/*-----下面两个为event工具，和this-----------*/
+				// btn[i].onclick = function(event){
+				// 	event || window.event;
+				// 	var target = event.target || event.scrElement;
+				// 	if(!target.count){
+				// 		target.count = 1;
+				// 	}else {
+				// 		++target.count;
+				// 	}
+				// 	alert(target.count);
+				// }
+
+				// btn[i].num = 0;
+				// btn[i].onclick = function(){
+				// 	this.num++;
+				// 	alert(this.num);
+				// }
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+	<input type="button" value="投票">
+</body>
+</html>

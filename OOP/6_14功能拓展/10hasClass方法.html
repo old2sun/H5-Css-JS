@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hasClass()</title>
+	<script src="js/Jerry_13.js"></script>
+	<script>
+		// 模拟 判断是否存在某个类名
+		// Jerry.fn.extend({
+		// 		hasClass : function(cn){
+		// 			var cname = this[0].className; // 获取第一个元素
+		// 			var arr = cname.split(/s+/g); // 按空格分隔类名，放进数组
+		// 			console.dir(arr);
+		// 			for(var i=0;i<arr.length;i++){
+		// 				if(arr[i] === cn){
+		// 					return true // 有为true
+		// 				}
+		// 			}
+		// 			return false; //没有为
+		// 		}
+		// 	});
+		window.onload = function(){
+			
+		var ret = $('div').hasClass('angry');
+		console.dir(ret);
+		}
+		
+	</script>
+</head>
+<body>
+	<div class="angry"></div>
+    <div class="sadness"></div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>构造函数属性</title>
+</head>
+<body>
+	<script>
+		/*
+		实例化对象的属性是动态的，可以随时添加
+		构造函数，原型函数或者同实例名字添加的属性效果相同
+		*/
+		function Foo(info){
+			var abc = 567;
+			this.info = info;
+			this.sex = 'man';
+			this.nowIndex = 12;
+		}
+		Foo.prototype.showInfo = function(){
+			// 改变属性值
+			this.nowIndex = 0;
+			this.age = 12455;
+			console.log(this.nowIndex,this.age);
+		}
+		var foo = new Foo('Hi~~~~');
+		//添加属性
+		foo.sex = 'lady';
+		foo.name= '慧慧';
+		foo.showInfo();
+		console.dir(foo);
+		console.log('*----------------------------------------*');
+		/*------------------------------------------------------------------*/
+
+		/* 
+		构造函数的作用就是用来实例化对象，
+		并且初始化属性值
+
+		实例对象的本质就是：无序的键值对集合	
+		*/
+
+		function Person(){
+			this.name = 'zhangsan';
+			this.num = 1;
+			this.age = 44;
+		}
+		var p1 = new Person();
+		var p2 = new Person();
+		var p3 = new Person();
+		var obj = {
+			name : '鬼鬼',
+			age : 19,
+			num : 99
+		}
+		console.dir(p1);
+		console.log(obj);
+		console.log('*-----------------------------------------------------------*');
+		/*------------------------------------------------------------*/
+		/*----模拟获取标签对象-----*/ 
+		/*
+		function People(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		function Tab(id,index){
+			this.oDiv=document.getElementById(id);//得到一个标签对象
+			this.aInput = this.oDiv.getElementsByTagName('input');
+			this.aDiv = this.oDiv.getElementsByTagName('div');
+			this.nowIndex = index;
+		}
+
+		var tab1 = new Tab('div1',0);
+		var tab2 = new Tab('div2',1);
+		var tab3 = new Tab('div3',2);
+		*/
+	</script>
+</body>
+</html>

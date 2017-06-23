@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象创建方式</title>
+	<script type = text/javascript>
+		/*
+			构造函数是抽象的，实例是具体的
+
+			构造函数的作用：实例化，产生一个实例对象
+		*/
+
+		// 构造函数形式创建对象
+		function Foo(name,age,abc){
+			this.name = name;
+			this.age = age;
+			// 函数里的函数叫方法，不然叫函数
+			this.showName = function(){
+				console.log(this.name);
+			}
+			console.log('hello kitty');
+		} 
+		// 普通函数没有指定返回值，返回undefinded
+		var ret = Foo();
+		console.log(ret);
+
+		var foo = new Foo();
+		var foo1 = new Foo();
+		// foo、foo1就是构造函数Foo的实例对象，console.dir 查看结构
+		console.dir(foo);
+		console.dir(foo1);
+
+		var f1 = new Foo('Cj',24);
+		var f2 = new Foo('Cy',23);
+		console.dir(f1); 
+		console.dir(f2); 
+
+		var obj = new Object();
+		obj.name = '菜叶';
+		console.log(obj.name);
+		// 构造函数没有参数，后面的括号可省略
+		var obj2 = new Object;
+		obj2.age = 33;
+		console.log(obj2.age);	
+		var obj3 = {};
+		obj3.name = '阿静';
+		obj3.age = 24;
+		obj3.showName = function() {
+			console.log(obj3.name+obj3.age);
+		}
+		obj3.showName();
+		console.dir(obj3);
+
+		//-------------------------------------
+
+		/* 实例对象产生的方式： 
+		1、构造函数
+		2、字面量
+		*/
+
+		// 字面量形式创建对象
+		// var str = 'weixin';
+		// var num = 123;
+		// var flag = true;
+
+		// var arr = [1,2,3];
+		// var arr2 = new Array(1,2,3);
+		var ojb = {name:'小洲'};
+		var ojb2 = new Object({name:'智哥',age:18});
+		var reg = /\d+/;
+		var reg2 = new RegExp("\\d+");
+		var date = new Date();
+		console.log(Math.random());  
+		// Math 不能new
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
