@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mask</title>
+	<style type="text/css">
+		/*
+			它的属性值可以有两种写法, 图片蒙层、渐变蒙层.
+
+			它的属性值与 background 类似, 相关属性有 webkit-mask-clip、webkit-mask-position 和 webkit-mask-repeat
+
+			-webkit-mask: url(mask.png)  这里的图片会把背景图遮盖, 显示形状内的图片区域
+
+
+		*/
+		body {
+			display: flex;
+			justify-content: center;
+
+		}
+
+		/*图片蒙层*/
+		.demo1,
+		.demo2 {
+			width: 150px;
+			height: 150px;
+			margin: 10px;
+			background: url(logo.jpg) no-repeat;
+			background-size: 100%;
+			-webkit-mask: url(mask.png);
+		}
+
+		/*渐变蒙层*/
+		.demo2 {
+			-webkit-mask: -webkit-gradient(linear, left top, right bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+		}
+	</style>
+</head>
+<body>
+	<div class="demo1"></div>
+	<div class="demo2"></div>
+</body>
+</html>

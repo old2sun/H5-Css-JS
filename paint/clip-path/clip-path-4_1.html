@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css clip-path 关于 JS demo(迷之demo) </title>
+	<style type="text/css">
+		.content {
+		  	max-width: 600px;
+		  	margin: 0 auto;
+		}
+
+		.overlay {
+		  	position: absolute;
+		  	top: 0;
+		  	left: 0;
+		  	right: 0;
+		  	bottom: 0;
+		  	display: none;
+		}
+
+		#indication {
+		  	position: absolute;
+		  	display: none;
+		}
+
+		#banner {
+		  	position: absolute;
+		  	display: none;
+		  	top: 50%;
+		  	left: 50%;
+		  	transform: translate(-50%, -50%);
+		  	text-align: center;
+		  	background: rgba(255, 255, 255, 0.8);
+		  	padding: 1em;
+		}
+
+		.message { 
+		  	margin: 0 0.5em;
+		}
+
+		.flipped {
+		  	transform: scaleX(-1); 
+		}
+
+	</style>
+</head>
+<script>
+	window.onload = function () {
+
+		const TOUR = [
+			{ msg: 'Begin of tour'},
+			{ msg: 'Sbuscribe here to our RSS feed',
+			selector: '#rss'},
+			{ msg: 'Dolors sit amet', selector: '#action'},
+			{ msg: 'Have fun!'}
+		];
+
+		const sign = document.querySelector('#indication');
+		const textBanner = document.querySelector('#banner');
+		const overlay = document.querySelector('.overlay');
+		var content = document.querySelector('.content');
+
+		playTour(TOUR);
+
+		function playTour(tour) {
+			overlay.style.display = 'block';
+
+			let currentStep = 0;
+			showNext(TOUR[currentStep]);
+
+			// 点击互动
+			let clickHandler = function () {
+
+				currentStep++;
+
+				if (currentStep >= tour.length) {
+
+					overlay.removeEventListener('click', clickHandler);
+					overlay.style.display = 'none';
+					unclip();
+
+				} else {
+
+					showNext(TOUR[currentStep]);
+
+				}
+			}
+
+			let click = overlay.addEventListener('click', clickHandler);
+		}
+
+		function showNext(step) {
+			if (step.selector) {
+
+				textBanner.style.display = 'none';
+				sign.style.display = 'flex';
+				pointMessage(sign, step.msg, document.querySelector(step.selector));
+
+				clipElement(document.querySelector(step.selector));
+
+			} else {
+
+				textBanner.querySelector('h1').innerHTML = step.msg;
+				textBanner.style.display = 'block'
+				sign.style.display = 'none';
+				unclip();
+
+			}
+		}
+
+		function clipElement(el) {
+
+			let containerBounds = content.getBoundingClientRect();
+			let elBounds = el.getBoundingClientRect();
+
+			let clip = {
+
+				top: elBounds.top - containerBounds.top,
+				left: elBounds.left - containerBounds.left,
+				right: containerBounds.left + containerBounds.width - (elBounds.left + elBounds.width),
+				bottom: containerBounds.top + containerBounds.height - (
+					elBounds.top + elBounds.height)
+			};
+
+			let inset = `inset(${clip.top})px ${clip.right}px ${clip.bottom}px ${clip.left}px`;
+			content.style['-webkit-clip-path'] = inset;
+		}
+
+		function unclip() {
+			content.style['-webkit-clip-path'] = 'none';
+		}
+
+		function pointMessage(sign, msg, el) {
+			const PADDING = 5;
+
+			// getBoundingClientRect 元素占据页面的矩形区域 ?
+			let signBox = sign.getBoundingClientRect();
+
+			sign.style.left = `${el.offsetLeft - signBox.width - PADDING}px`;
+			sign.style.top = `${el.offsetTop - signBox.height / 2 + el.getBoundingClientRect().height /2 }px `;
+		}
+
+	}
+</script>
+<body>
+	<article class="content">
+	  	<header>
+		    <h1>Lorem ipsum</h1>
+		    <p><a href="#" id="rss">RSS feed</a></p>
+	  	</header>
+	  	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+	  	<footer><p><button id="action">A button here</button></p></footer>
+	</article>
+
+	<div class="overlay">
+		<div id="banner">
+		    <h1>Hola</h1>
+		    <h2>Click anywhere to continue</h2>
+		</div>
+		<div id="indication">
+		    <span class="message">Lorem ipsum</span>
+		   	<svg class="arrow" width="50" height="20">
+			    <rect x="0" y="5" width="30" height="10" />
+			    <polygon points="30 0, 50 10, 30 20"/>
+		    </svg>
+		</div>
+	</div>
+</body>
+</html>

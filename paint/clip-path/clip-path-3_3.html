@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css clip-path 配合动画进阶</title>
+	<style type="text/css">
+		* {
+			padding:0;
+			margin: 0;
+		}
+		html {
+			height: 100%;
+		}
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			height: 100%;
+		}
+
+		/* 动画化 */
+		.polygon {
+
+			-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
+			animation: polygons 3s infinite alternate;
+
+		}
+
+		/* 少一个角度都会 error*/
+		@keyframes polygons {
+			/*just copy*/
+			from {
+		    	-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+		  	}
+		  
+		  	to {
+		    	-webkit-clip-path: polygon(44% 26%, 58% 38%, 58% 38%, 44% 81%, 44% 81%, 25% 49%);
+		  	}
+		}
+
+	</style>
+</head>
+<body>
+	<img src="https://hacks.mozilla.org/files/2017/06/omega.jpg" alt="Omega nebula" height="300" class="polygon">
+</body>
+</html>

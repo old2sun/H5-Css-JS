@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css clip-path 配合动画</title>
+	<style type="text/css">
+		* {
+			padding:0;
+			margin: 0;
+		}
+		html {
+			height: 100%;
+		}
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			height: 100%;
+		}
+
+		/* 动画化 */
+		.circle {
+			animation: circles 3s infinite alternate;
+		}
+
+		@keyframes circles {
+			from {
+				-webkit-clip-path: circle(0%);
+			} 
+			to {
+				-webkit-clip-path: circle(100%);
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<img src="https://hacks.mozilla.org/files/2017/06/firefox-logo.png" height="200" class="circle">
+</body>
+</html>

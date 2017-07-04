@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>maskNjs</title>
+	<style type="text/css">
+
+		body {
+			display: flex;
+			justify-content: center;
+
+		}
+
+		.mask {
+			width: 550px;
+			height: 350px;
+			margin: 10px;
+			background: url(logo.jpg) no-repeat;
+			background-size: 100%;
+			
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="mask"></div>
+</body>
+<script type="text/javascript">
+
+	(function(){
+		var mask = document.querySelector('.mask');
+		mask.onmouseover = function() {
+			var b = 0,
+			c = this,
+
+			d=setInterval(function(){
+			if(b>parseInt(c.clientWidth+50)){clearInterval(d);}
+
+			// 迷之API
+			c.style.webkitMask= "-webkit-gradient(radial, 100 53,"+b+", 100 53, "+(b+15)+", from(rgba(255, 255, 255,1)), color-stop(0.5,rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255,1)))"
+			b++;
+		 },0);
+
+		}		
+	}());
+</script>
+</html>
