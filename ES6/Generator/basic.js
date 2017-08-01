@@ -22,4 +22,3 @@ hg.next();  // { value: 'ending', done: true }
 hg.next();  // { value: undefined, done: true }
 
 
-
