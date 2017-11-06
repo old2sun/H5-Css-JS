@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本</title>
+	<script src="script/vue.js"></script>
+</head>
+<body >
+
+	<div id='example'>
+		<div v-bind:class="[{ active: isActive }, errorClass]">123123123</div>
+	</div>
+	
+</body>
+	
+<!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 -->
+<!-- 提供这些功能以保持精简。这也可以让你自由选择自己更熟悉的工具。 -->
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+
+<script>
+	var watchExampleVM = new Vue({
+		el: '#example',
+		data: {
+		  	isActive: 'active',
+		  	errorClass: 'text-danger'
+		}
+	});
+</script>
+
+</html>
