@@ -16,7 +16,6 @@ function demo4(x,y){
 // ES6
 let demo5 = (x,y) => {x++; y--; return x + y;}
 
-
 /* 
 *	ES6 除了写法简便, 还改变了 this 的指向, 它由原来指向调用者, 转变为指向定义函数的对象
 *	那是由于 箭头函数 没有自己的 this, 它的 this 是继承外部的代码块 

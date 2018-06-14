@@ -1,31 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>文本</title>
-	<script src="script/vue.js"></script>
+  	<meta charset="UTF-8">
+  	<title>2</title>
+  	<script src="script/vue.js"></script>
+  	<style type="text/css">
+		
+	</style>
 </head>
 <body >
-
-	<div id='example'>
-		<div v-bind:class="[{ active: isActive }, errorClass]">123123123</div>
+	<div id="app">
+		
+<my-com v-model='newTodoText' placeholder='test' @click='ccc'  @keydown.enter='add'></my-com>
 	</div>
 	
 </body>
-	
-<!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 -->
-<!-- 提供这些功能以保持精简。这也可以让你自由选择自己更熟悉的工具。 -->
-<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 
-<script>
-	var watchExampleVM = new Vue({
-		el: '#example',
-		data: {
-		  	isActive: 'active',
-		  	errorClass: 'text-danger'
+<script type="text/javascript">
+	let nextTodoId = 1;
+	Vue.component('my-com',{
+		template:'<input\
+		    type="text"\
+		    class="input"\
+		    :value="value"\
+		    v-on="listeners"\
+		  >',
+		  data: function() {
+		  	return {
+			newTodoText: '',
+		    todos: [
+						{
+							id: nextTodoId++,
+							text: 'Learn Vue'
+						},
+						{
+							id: nextTodoId++,
+							text: 'Learn about single-file components'
+						},
+						{
+							id: nextTodoId++,
+							text: 'Fall in love'
+						}
+					]
+		    }
+		  },
+		  props: {
+		  	 value: {
+		  	 	type: String,
+		  	 	default: '2b'
+		  	 }
+		  },
+		  computed : {
+		  	listeners : function() {
+
+		  	}
+		  },
+		  methods: {
+		  	add: function() {
+		  	 	console.log(123);
+		  	},
+		  	ccc: function() {
+		  	 	console.log(123);
+		  	}
+		  }
+
+		})
+	new Vue({
+		el: "#app",
+		data : {
+
 		}
-	});
+	})
+
 </script>
 
 </html>
