@@ -1,26 +1,32 @@
-class Student(object):
-	def __init__(self):
-		self.name = 'Michael'
+# import random, time, queue
+# from multiprocessing.managers import BaseManager
 
-	def __getattr__(self, attr):
-		if attr == 'score':
-			return 99
-		if attr == 'age':
-			return lambda: 25
-		# raise AttributeError('\'Student\' object has no attribute \'%s\'' %attr)
+# task_queue = queue.Queue()
+# result_queue = queue.Queue()
 
+# class QueueManager(BaseManager):
+# 	pass
 
-s = Student()
+# QueueManager.register('get_task_queue', callable=lambda: task_queue)
+# QueueManager.register('get_result_queue', callable=lambda: result_queue)
 
-class Chain(object):
-	def __init__(self, path=''):
-		self.__path = path
+# manager = QueueManager(address=('', 5000), authkey=b'abc')
 
-	def __getattr__(self, path):
-		return Chain('%s/%s'%(self.__path, path))
+# manager.start()
 
-	def __str__(self):
-		return self.__path 
+# task = manager.get_task_queue()
+# result = manager.get_result_queue()
 
-re = Chain().abc
-print(re)
+# for i in range(10):
+# 	n = random.randint(0, 10000)
+# 	print('Put task %d...' %n)
+# 	task.put(n)
+
+# print('Try get results...')
+
+# for i in range(10):
+# 	r = result.get(timeout=10)
+# 	print('Result: %s' %r)
+
+# manager.shutdown()
+# print('master exit.')
