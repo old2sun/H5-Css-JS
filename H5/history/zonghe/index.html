@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>按按</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<button data="first">first</button>
+			<button data="second">second</button>
+			<button data="third">third</button>
+		</div>
+		<div class="content">
+			<div class="item">first</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+
+var item = document.getElementsByClassName('item')[0];
+var header = document.getElementsByClassName('header')[0];
+var page = '';  //  请求内容?
+var xmlhttp = ''; 
+var sth = '';  // 响应内容
+
+function init() {
+	// 替换页面的历史记录，并把 {newPage:'first'} 传入这条历史记录下，方便后期 popstate 调用 ?
+	history.replaceState({newPage:'first'}, null, '?first');
+	ajax('GET', './data.php', 'page=first', doData, true)
+}
+init();
+
+function ajax(way, url, cont, foo ,bool) {
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open(way, url+'?'+cont, bool);
+	xmlhttp.send();
+	xmlhttp.onreadystatechange=function() {
+  		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+    		sth = xmlhttp.responseText;
+    		foo(sth);
+    	}
+  	}
+}
+
+function doData(data) {
+	// 展示ajax获取的数据
+	item.innerHTML = data
+}
+
+header.addEventListener('click', function(e) {
+	page = e.target.getAttribute('data');
+	history.pushState({newPage: page}, null, '?'+page);
+	ajax('GET', './data.php', 'page='+page, doData, true)
+})
+
+// 当页面前进与后退的时候, popstate 监听历史记录变化, 触发对应页面的 ajax 请求
+window.addEventListener('popstate', function(e) {
+	var newPage = e.state.newPage;
+	ajax('GET', './data.php', 'page='+newPage, doData, true)
+})
+
+</script>
+</html>

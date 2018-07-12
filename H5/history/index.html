@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+</head>
+<body>
+	index
+</body>
+<script type="text/javascript">
+//index.html
+history.pushState(null, null,'./demo.html')
+history.pushState({abc:'123'}, null,'./inexistence.html')  // 并不会检查有无这个地址
+history.pushState({abc:'abc'}, null,'#one')
+history.pushState(null, null,'./new.html')
+
+</script>
+</html>
