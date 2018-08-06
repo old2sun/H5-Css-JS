@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽排列删除 示例</title>
+</head>
+<style type="text/css">
+	li {
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		margin: 5px;
+		float: left;
+		list-style-type:none;
+		text-align: center;
+		font-size: 20px;
+		color: #fff;
+		background: crimson;
+	}
+
+	.box {
+		width: 300px;
+		height: 100px;
+		clear: both;
+		background: grey;
+	}
+</style>
+<body>
+	<div class="wrapper">
+		<ul>
+			<li draggable="true">1</li>
+			<li draggable="true">2</li>
+			<li draggable="true">3</li>
+			<li draggable="true">4</li>
+			<li draggable="true">5</li>
+		</ul>
+		<div class="box">垃圾桶</div>
+	</div>	
+</body>
+<script type="text/javascript">
+	var oUl = document.getElementsByTagName('ul')[0],
+		oBox = document.getElementsByClassName('box')[0],
+		oLi = document.getElementsByTagName('li'),
+		len = oLi.length;
+
+	function bindLiEvent() {
+		for(var i = 0; i < len; i++) {
+			oLi[i].addEventListener('dragstart', function(e) {
+				// 获得值
+				var index = getIndex(this);
+				// 保存值
+				e.dataTransfer.setData('data', index);
+			});
+			oLi[i].addEventListener('dragover',function(e) {
+				e.preventDefault();
+			});
+			oLi[i].addEventListener('drop', function(e) {
+				// 取出值
+				var i = e.dataTransfer.getData('data');
+				// 重新排序
+				// 这里的BUG, 前一位不能和后一位直接互换
+				oUl.insertBefore(oLi[i], this);
+			});
+		}
+	}
+
+	// 获取列表最新的索引值
+	function getIndex(dom) {
+		for(var i = 0; i < len; i++) {
+			if(oLi[i] === dom ) {
+				return i
+			}
+		}
+	}
+
+	function removeLi( ) {
+		oBox.addEventListener('dragover', function(e) {
+			e.preventDefault();
+		})
+
+		oBox.addEventListener('drop', function(e) {
+			e.preventDefault();
+			var index = e.dataTransfer.getData('data');
+			oLi[index].remove();
+		})
+	}
+
+	bindLiEvent();
+	removeLi();
+</script>
+</html>

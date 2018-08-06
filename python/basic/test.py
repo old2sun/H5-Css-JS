@@ -1,32 +1,62 @@
-# import random, time, queue
-# from multiprocessing.managers import BaseManager
+from html.parser import HTMLParser
+from html.entities import name2codepoint
+from urllib import request
+import re
 
-# task_queue = queue.Queue()
-# result_queue = queue.Queue()
+class pythonHtml(HTMLParser):
+	a_t1 = False
+	a_t2 = False
+	a_t3 = False
 
-# class QueueManager(BaseManager):
-# 	pass
+	def __init__(self):
+		HTMLParser.__init__(self)
+		self.information = []
 
-# QueueManager.register('get_task_queue', callable=lambda: task_queue)
-# QueueManager.register('get_result_queue', callable=lambda: result_queue)
+	def handle_starttag(self, tag, attrs):
+		def _attr(attrlist, attrname):
+			for attr in attrlist:
+				if attr[0] == attrname:
+					return attr[1]
+			return None 
 
-# manager = QueueManager(address=('', 5000), authkey=b'abc')
+		if tag == 'time':
+			self.a_t1 = True
+		elif tag == 'span' and _attr(attrs, "class")=='event-location': 
+			self.a_t2 = True
+		elif tag == 'h3' and _attr(attrs, "class")=='event-title':
+			self.a_t3 = True
 
-# manager.start()
+	def handle_data(self, data):
+		if self.a_t1 is True:
+			if re.match(r'^\s\d{4}', data):
+				self.information.append(dict(year=data))
+			else:
+				self.information.append(dict(day=data))
+		elif self.a_t2 is True:
+			self.information.append(dict(event_location=data))
+		elif self.a_t3 is True:
+			self.information.append(dict(event_title=data))
+				
+	def handle_endtag(self, tag):
+		if tag == 'time':
+			self.a_t1 = False
+		elif tag == 'span':
+			self.a_t2 = False
+		elif tag == 'h3':
+			self.a_t3 = False
 
-# task = manager.get_task_queue()
-# result = manager.get_result_queue()
+def parserHTML(html_str):
+	parser = pythonHtml()
+	parser.feed(html_str)
+	for i, val in enumerate(parser.information):
+		i += 1
+		print(val)
+		if i%4 == 0:
+			print('--------------------------')
 
-# for i in range(10):
-# 	n = random.randint(0, 10000)
-# 	print('Put task %d...' %n)
-# 	task.put(n)
+url = 'https://www.python.org/events/python-events/'
+with request.urlopen(url) as f:
+	data = f.read().decode('utf-8')
 
-# print('Try get results...')
+parserHTML(data)
 
-# for i in range(10):
-# 	r = result.get(timeout=10)
-# 	print('Result: %s' %r)
-
-# manager.shutdown()
-# print('master exit.')

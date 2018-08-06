@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单的说明</title>
+</head>
+<style type="text/css">
+	.drag {
+		background: skyblue;
+	}
+	.wrapper {
+		width: 200px;
+		height: 200px;
+		border: 1px solid #ddd;
+	}
+</style>
+<body>
+	<div draggable="true">
+		设置元素为可拖放draggable
+		<pre>
+			&lt;div class="drag" draggable="true"&gt;&lt;/div&gt;
+			&lt;div class="wrapper"&gt;&lt;/div&gt;
+		</pre>
+		事件
+		<pre>
+			dragstart
+			dragend
+			dragenter
+			dragover
+			drop
+		</pre>
+	</div>
+	
+	<div class="drag" draggable="true">元素</div>
+	<div class="wrapper">区域</div>
+</body>
+<script type="text/javascript">
+var oDrag = document.getElementsByClassName('drag')[0],
+	oWrapper = document.getElementsByClassName('wrapper')[0]
+
+// 抓取目标
+oDrag.addEventListener('dragstart', function() {
+	console.log('dragstart');
+})
+
+// 放开目标
+oDrag.addEventListener('dragend', function() {
+	console.log('dragend');
+})
+
+// 鼠标进入"放置区域"
+oWrapper.addEventListener('dragenter', function() {
+	console.log('dragenter');
+})
+
+// 目标在"放置区域"移动时
+oWrapper.addEventListener('dragover', function(e) {
+	// 触发 drop 事件必须现在 dragover 里面取消默认事件
+	e.preventDefault();
+	console.log('dragover');
+})
+
+// "放置区域"被放入元素时触发
+oWrapper.addEventListener('drop', function(e) {
+	// 避免将文件拖入时，文件作为链接打开
+	e.preventDefault();
+	console.log('drop');
+})
+	
+</script>
+</html>

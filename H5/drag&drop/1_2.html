@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置数据 & 示例</title>
+</head>
+<style type="text/css">
+	#drag1 {
+		width: 100px;
+		height: 100px;
+		margin: 5px;
+		float: left;
+		background: skyblue;
+	}
+	#drag2 {
+		width: 100px;
+		height: 100px;
+		margin: 5px;
+		float: left;
+		background: skyblue;
+	}
+	.wrapper {
+		width: 500px;
+		height: 200px;
+		clear: both;
+		border: 1px solid orange;
+	}
+</style>
+<body>
+	<div id="drag1" draggable="true">1</div>	
+	<div id="drag2" draggable="true">2</div>
+	<div class="wrapper">放置框</div>	
+</body>
+<script type="text/javascript">
+	var oDrag1 = document.getElementById('drag1'),
+		oDrag2 = document.getElementById('drag2'),
+		oWrapper = document.getElementsByClassName('wrapper')[0];
+
+	var child = oWrapper.childNodes;
+
+	oDrag1.addEventListener('dragstart', function(e) {
+		// 设置数据 e.dataTransfer.setData()
+		e.dataTransfer.setData('data', this.id);
+	})
+
+	oDrag2.addEventListener('dragstart', function(e) {
+		e.dataTransfer.setData('data', this.id);
+	})
+
+	oWrapper.addEventListener('dragenter', function() {
+		// 删除文本节点 '放置框'
+		for (var i = 0; i < child.length; i++) {
+			if(child[i].nodeType === 3) {
+				console.log(child[i]);
+				oWrapper.removeChild(child[i])
+			}
+		}
+	})
+
+	oWrapper.addEventListener('dragover', function(e) {
+		// 触发drop事件必须先在 dragover里面取消默认事件
+		e.preventDefault();
+	})
+
+	oWrapper.addEventListener('drop', function(e) {
+		// 获取 数据？
+		var data = e.dataTransfer.getData('data');
+		oWrapper.appendChild(document.getElementById(data));
+	})
+</script>
+</html>
