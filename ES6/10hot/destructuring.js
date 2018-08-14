@@ -13,6 +13,7 @@ let home = {bird, mouse};
 // ES6, 赋值
 let miao = {type: 'animal', many: 2};
 let {type, many} = miao;
+console.log({type, many})
 
 
 
