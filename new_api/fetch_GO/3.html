@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Post</title>
+</head>
+<style type="text/css">
+	
+</style>
+<body>
+
+<script type="text/javascript">
+
+// fetch('http://192.168.1.227:8080/new_api/fetch_GO/test.html' ,{
+// 	method: 'POST',
+// 	// body 这里数据请求，处理后再返回
+// 	body: new URLSearchParams([["foo", 1],["bar", 2]]).toString()
+// 	})
+// 	.then( res => {
+// 		return res
+// 	})
+// 	.then( res => {
+// 		console.log(res)
+// 	})
+
+fetch('http://192.168.1.227:8080/new_api/fetch_GO/test.html' ,{
+	method: 'POST',
+	headers: new Headers({
+		// 指定提交方式为表单提交
+		'Content-Type':'application/x-www-form-urlencoded'
+	}),
+	body: new URLSearchParams([["foo", 1],["bar", 2]]).toString()
+	})
+	.then( res => {
+		return res
+	})
+	.then( res => {
+		console.log(res)
+	})
+
+</script>	
+</body>
+</html>

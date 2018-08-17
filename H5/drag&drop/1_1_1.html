@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>1_1  补充</title>
+	<title>1_1 补充</title>
 </head>
 <style type="text/css">
 	.src {
@@ -30,7 +30,7 @@
 	    line-height: 200px;
 	    text-align: center;
 	    border: 1px solid gray;
-	    color: red;
+	    color: crimson;
 	}
 
 </style>
@@ -42,7 +42,7 @@
                 <p draggable="true">此段文字设置了属性draggable="true"</p>  
             </div>
             <div class="url" id="url">
-                <a href="http://weiqinl.com" target="_blank">我是url:http://weiqinl.com</a>
+                <a href="http://baidu.com" target="_blank">我是url:http://baidu.com</a>
             </div>
             <img class="img" id="tupian1" src="img1.jpg" alt="图片1" />
             <img class="img" id="tupian2" src="img2.jpg" alt="图片2" />
@@ -54,20 +54,19 @@
 	var dragSrc = document.getElementById('txt');
 	var target = document.getElementById('target');
 
-	dragSrc.ondragStart = handle_start
+	dragSrc.ondragstart = handle_start
 	dragSrc.ondrag = handle_drag
 	dragSrc.ondragend = handle_end
 
-	function handle_start() {
-		console.log('handle_start 开始拖动后触发')	
+	function handle_start(e) {
+		// e.dataTransfer.effectAllowed = 'linkMove';
+		console.log('dragStart 开始拖动后触发')	
 	}
-
 	function handle_drag() {
-		console.log('handle_drag 拖动时反复触发')	
+		console.log('drag 拖动时反复触发')	
 	}
-
 	function handle_end() {
-		console.log('handle_end 拖动结束后触发')	
+		console.log('dragend 拖动结束后触发')	
 	}
 
 
@@ -75,13 +74,7 @@
 	target.ondragover = handle_over
 	target.ondragleave = handle_leave
 
-	target.ondrop = handle.drop
-
-	function handle_enter(e) {
-		console.log('handle_enter 当元素进入目的地时触发')
-		// 阻止浏览器默认行为
-		e.preventDefault()
-	}
+	target.ondrop = handle_drop
 
 	function handle_enter(e) {
 		console.log('handle_enter 当元素进入目的地时触发')
@@ -91,6 +84,7 @@
 
 	function handle_over(e) {
 		console.log('handle_over 元素在目的地时触发')
+		// e.dataTransfer.dropEffect = 'link'
 		e.preventDefault()
 	}
 
@@ -105,6 +99,17 @@
 		target.innerHTML = ''
 		target.append(t + '-拖放触发的事件')
 		e.preventDefault()
+		// console.log(e.dataTransfer.types)
+		// if (e.dataTransfer.types != null) {
+		// 	for (var i = 0; i<e.dataTransfer.types.length;i++) {
+		// 		console.log("...types["+ i +"] = "+ e.dataTransfer.types[i]);
+		// 	}
+		// }
+		// if (e.dataTransfer.item != null) {
+		// 	for (var i = 0; i<e.dataTransfer.items.length;i++) {
+		// 		console.log("... items["+i+"].kind="+e.dataTransfer.item[i].kind+"; type="+e.dataTransfer.items[i].type);
+		// 	}
+		// }
 	}
 </script>
 </html>
