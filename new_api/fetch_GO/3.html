@@ -13,7 +13,7 @@
 
 // fetch('http://192.168.1.227:8080/new_api/fetch_GO/test.html' ,{
 // 	method: 'POST',
-// 	// body 这里数据请求，处理后再返回
+// 	// body 请求对象
 // 	body: new URLSearchParams([["foo", 1],["bar", 2]]).toString()
 // 	})
 // 	.then( res => {
@@ -23,16 +23,17 @@
 // 		console.log(res)
 // 	})
 
-fetch('http://192.168.1.227:8080/new_api/fetch_GO/test.html' ,{
+fetch('http://192.168.1.217:8080/new_api/fetch_GO/movies.json' ,{
 	method: 'POST',
 	headers: new Headers({
 		// 指定提交方式为表单提交
 		'Content-Type':'application/x-www-form-urlencoded'
 	}),
+	// 请求对象
 	body: new URLSearchParams([["foo", 1],["bar", 2]]).toString()
 	})
 	.then( res => {
-		return res
+		return res.text()
 	})
 	.then( res => {
 		console.log(res)
