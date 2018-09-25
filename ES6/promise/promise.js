@@ -23,3 +23,6 @@ function delay(interval) {
 };
 
 var oneSecondDelay = delay(1000);
+oneSecondDelay.then(function(){
+	console.log('success')
+})
