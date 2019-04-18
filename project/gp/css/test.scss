@@ -1,7 +1,0 @@
-%mo1 {color:blue;background-color: red;}
-%mo2 {color:blue;background-color: red;text-indent: 2em}
-
-body{background-color: red;color:blue;text-align: center;}
-
-
-p{@extend %mo1;@extend %mo2;@extend body;}
